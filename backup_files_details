@@ -1,0 +1,36 @@
+	deleted:    .meteor/.finished-upgraders
+	deleted:    .meteor/.gitignore
+	deleted:    .meteor/.id
+	deleted:    .meteor/packages
+	deleted:    .meteor/platforms
+	deleted:    .meteor/release
+	deleted:    .meteor/versions
+
+
+
+	modified:   client/templates/pages/client/mail_settings/mail-settings.html
+	modified:   client/templates/pages/client/mail_settings/mail-settings.js
+	modified:   client/templates/pages/client/ticket_management/ticket_overview/ticket_view.html
+	modified:   client/templates/pages/client/ticket_management/ticket_overview/ticket_view.js
+	modified:   lib/collections.js
+	modified:   lib/router.js
+	modified:   server/publish.js
+	modified:   server/server.js
+	modified:   start_server.sh
+
+
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	client/templates/pages/client/ticket_management/ticket_overview/send_email_item.html
+	client/templates/pages/client/ticket_management/ticket_overview/send_email_item.js
+	client/templates/pages/client/ticket_management/ticket_overview/send_email_list.html
+	client/templates/pages/client/ticket_management/ticket_overview/send_email_list.js
+	client/templates/pages/client/ticket_management/ticket_overview/send_email_submit.html
+	client/templates/pages/client/ticket_management/ticket_overview/send_email_submit.js
+	killport
+	killport.1
+	npm-debug.log
+	package-lock.json
+

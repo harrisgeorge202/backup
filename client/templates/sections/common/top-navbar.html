@@ -1,0 +1,49 @@
+<template name="topNavbar">
+    <div class="">
+        <nav id="navbarWrapper" class="navbar navbar-static-top col-sm-12" role="navigation">
+            <div class="navbar-header">
+                <!--<a id="navbar-minimalize" class="minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <form role="search" class="navbar-form-custom" action="search_results">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    </div>
+                </form>-->
+                <a href="/" class=""><img class="logo-warp" src="fetch_logo2.png" alt="FetchApp Logo"></a>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                {{#if currentUser}}
+                    <li>
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">{{emailLocalPart}} <span
+                                class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            {{#if isAdmin}}
+                                <li><a href="{{pathFor 'adminUsersList'}}" class="btn-secondary"><strong>Clients</strong></a></li>
+                                <li><a href="{{pathFor 'adminPackagesList'}}" class="btn-secondary"><strong>Manage Packages</strong></a></li>
+                                <li><a href="{{pathFor 'adminPlatformsList'}}" class="btn-secondary"><strong>Manage Platforms</strong></a></li>
+                            {{/if}}
+                            <li><a href="{{pathFor 'packages'}}"> <img src="plans-icon.png" alt=""> Plans </a></li>
+                            <li><a href="{{pathFor 'platformsList'}}"> <img src="platform-icon.png" alt=""> Platforms </a></li>
+                            <li><a href="{{pathFor 'profileSettings'}}"> <img src="profile-icon.png" alt=""> My Profile </a></li>
+                            {{#if isUser}}
+                                <li><a href="{{pathFor 'clientMailSettings'}}"> <img src="settings.png" alt=""> Settings </a></li>
+                            {{/if}}
+                            <li class="divider"></li>
+                            <li><a class="js-logout" href="#"> <img src="logout-icon.png" alt=""> Logout </a></li>
+                        </ul>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="{{pathFor 'login'}}">
+                            <i class="fa fa-sign-in"></i> Sign In
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{pathFor 'join'}}">
+                            <i class="fa fa-sign-in"></i> Join
+                        </a>
+                    </li>
+                {{/if}}
+            </ul>
+        </nav>
+    </div>
+</template>

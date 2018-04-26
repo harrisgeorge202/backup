@@ -1,0 +1,85 @@
+<template name="dashboardList">
+	<!-- {{> pageHeading title='Statistics'}} -->
+
+	<div class="ibox float-e-margins settings-view">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="ibox float-e-margins" style="overflow-x: auto; overflow-y: hidden;">
+
+					<div class="ibox-title">
+						<h5>{{name}}</h5>
+					</div>
+
+					<div class="search-form" style="margin-top: 20px; margin-bottom: 15px;">
+						<form id="filter-days">
+							<div class="input-group">
+								<input type="text" id="noOfDays" placeholder="Enter number of days to filter" name="noOfDays" class="form-control input-lg">
+								<div class="input-group-btn">
+									<button class="btn btn-lg btn-primary" type="submit">
+										Search
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					
+					<!-- Dashboard fixed size container starts -->
+					<div class="dashboard-container">
+						{{#if questionsAvailable}}
+							{{#if ratedQuestionsAvailable}}
+								{{#if firstLoad}}
+
+									{{#if filteredQuestionsAvailable}}
+										<div style="float: left; width: 766px;">
+											{{#if filteredQuestionsReady}}
+												{{> overviewChart inputData=(filteredQuestions)}}
+												{{#each filteredQuestions}}
+													{{> chart inputData=(this) csvUrl=(csvLink this)}}	
+												{{/each}}
+											{{else}}
+												<div class="alert alert-warning">
+													Loading overview charts, please wait...
+												</div>
+												<div class="loader"></div>
+											{{/if}}
+										</div>
+										<div style="float: left; width: 354px; margin-left: 20px;">
+											{{#if filteredQuestionsReady}}
+												{{> recentRespondents inputData=(filteredQuestions)}}
+											{{else}}
+												<div class="alert alert-warning">
+													Loading recent respondents, please wait...
+												</div>
+												<div class="loader"></div>
+											{{/if}}
+										</div>
+									{{else}}
+										<div class="alert alert-warning">
+											No questions rated for the requested period yet, nothing to show!
+										</div>
+									{{/if}}
+
+								{{else}}
+									<div class="alert alert-warning">
+											Loading the dashboard, please wait...
+									</div>
+									<div class="loader"></div>
+								{{/if}}
+							{{else}}
+								<div class="alert alert-warning">
+									No questions rated yet for this platform, nothing to show!
+								</div>
+							{{/if}}
+						{{else}}
+							<div class="alert alert-warning">
+								No questions active for this platform!
+							</div>
+						{{/if}}
+					</div>
+					<!-- Dashboard fixed size container Ends -->
+
+				</div>
+			</div>
+		</div>
+	</div>
+</template>

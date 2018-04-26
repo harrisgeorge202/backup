@@ -1,0 +1,43 @@
+<template name="platformsItem">
+      <div class="ibox float-e-margins platforms-view">
+            <div class="ibox-title">
+                <h5>{{name}}</h5>
+            </div>
+            <div class="ibox-content">
+                {{#if sessionReady}}
+                {{#each sessions this}}
+                <form id="copy-keys" class="form-inline" role="form">
+                   <div class="row">
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="authSecret">Auth Secret</label>
+                                <input type="text" class="form-control" id="authSecret" value="{{secret}}">
+                                <!--<button type="submit" class="btn btn-primary btn-outline">Copy</button>-->
+                            </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label" for="authKey">Auth Key</label>
+                                <input type="text" class="form-control" id="authKey" value="{{key}}">
+                                <!--<button type="submit" class="btn btn-primary btn-outline">Copy</button>-->
+                            </div>
+                       </div>
+                   </div>
+                </form>
+                {{else}}
+                    <div class="alert alert-info">
+                        {{createSession}}
+                    </div>
+                {{/each}}
+                {{/if}}
+                <p>{{description}}</p>
+                <div class="instruction">{{{conn_instructions}}}</div>
+                <a class="js-delete-item delete-item btn btn-primary" href="{{pathFor 'questionsView'}}"><span class="icon-trash">Continue</span></a>
+
+            </div>
+        </div>
+</template>
+
+

@@ -1,0 +1,165 @@
+#gauge-overlay {
+  position: absolute;
+  left: 10px;
+  top: 150px;
+  width: 210px;
+  height: 60px;
+  z-index: 100;
+  text-align: center;
+  vertical-align: middle;
+ /* height: 40px; */
+ /* line-height: 40px; */
+}
+.chart-gauge {
+  width: 210px;
+}
+
+/* 6 Section gauge */
+
+.chart6-color1 {
+  fill: #d9534f;
+}
+
+.chart6-color2 {
+  fill: #d9534f;
+}
+
+.chart6-color3 {
+  fill: #d9534f;
+}
+
+.chart6-color4 {
+  fill: #d9534f;
+}
+
+.chart6-color5 {
+  fill: #f0ad4e;
+}
+
+.chart6-color6 {
+  fill: #5cb85c;
+}
+
+/* 8 Section gauge */
+
+.chart8-color1 {
+  fill: #e40500;
+}
+
+.chart8-color2 {
+  fill: #e3332e;
+}
+
+.chart8-color3 {
+  fill: #e05c59;
+}
+
+.chart8-color4 {
+  fill: #dd8a88;
+}
+
+.chart8-color5 {
+  fill: #87c37f;
+}
+
+.chart8-color6 {
+  fill: #6ac55e;
+}
+
+.chart8-color7 {
+  fill: #4fc640;
+}
+
+.chart8-color8 {
+  fill: #18c900;
+}
+
+/* 10 Section gauge */
+
+.chart10-color1 {
+  fill: #d9534f;
+}
+
+.chart10-color2 {
+  fill: #d9534f;
+}
+
+.chart10-color3 {
+  fill: #d9534f;
+}
+
+.chart10-color4 {
+  fill: #d9534f;
+}
+
+.chart10-color5 {
+  fill: #d9534f;
+}
+
+.chart10-color6 {
+  fill: #d9534f;
+}
+
+.chart10-color7 {
+  fill: #f0ad4e;
+}
+
+.chart10-color8 {
+  fill: #f0ad4e;
+}
+
+.chart10-color9 {
+  fill: #5cb85c;
+}
+
+.chart10-color10 {
+  fill: #5cb85c;
+}
+
+/* 10 Section gauge for sentiment analysis*/
+
+.chart10-2-color1 {
+  fill: #D9524E;
+}
+
+.chart10-2-color2 {
+  fill: #D9524E;
+}
+
+.chart10-2-color3 {
+  fill: #E47C4E;
+}
+
+.chart10-2-color4 {
+  fill: #E47C4E;
+}
+
+.chart10-2-color5 {
+  fill: #F0AD4E;
+}
+
+.chart10-2-color6 {
+  fill: #F0AD4E;
+}
+
+.chart10-2-color7 {
+  fill: #AFD357;
+}
+
+.chart10-2-color8 {
+  fill: #AFD357;
+}
+
+.chart10-2-color9 {
+  fill: #5CB85C;
+}
+
+.chart10-2-color10 {
+  fill: #5CB85C;
+}
+
+
+.needle,
+.needle-center {
+  fill: #676a6c;
+}

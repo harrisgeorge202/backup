@@ -1,0 +1,63 @@
+<template name="platformsList">
+    <!-- {{> pageHeading title='Platforms'}} -->
+
+    <div class="list-platforms">
+        <div class="row">
+            {{#each platforms}}
+
+            {{#if compare _id}}
+            <div class="col-md-6">
+                <div class="float-e-margins">
+                    <div class="ibox-title">
+                        <h5>{{name}}</h5>
+                    </div>
+                    <div class="ibox-content fixed-side-panel platform-list-nw-h">
+                        <div class="fixed-panel-left sm">
+                            {{#if image}}<img src="{{image}}"/>{{/if}}
+                        </div>
+                        <div class="right-panel-wrap">
+                            <p>{{description}}</p>
+                            <a href="{{specialLink _id}}" class="list-platform {{activeListClass}} btn btn-primary" title="{{name}}">
+                                Proceed with {{name}} <i class="fa fa-angle-double-right"></i>
+                            </a>
+                            {{#if showAuthsection _id}}
+                                <a  class="list-platform {{activeListClass}} btn btn-primary" id="showSecret" data-id="{{_id}}">
+                                Keys <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            {{/if}}
+                        </div>
+                        {{#if showAuthsection _id}}
+                        <div class="right-panel-wrap hide" id="{{_id}}">
+                            <!-- {{> platformsItem platformId=(_id)}} -->
+                            <form id="copy-keys" class="form-inline" role="form">
+                                <div class="row scretKeyWrap">
+                                    <div class="col-md-12">
+                                        <!-- <div class="form-group"> -->
+                                            <label class="col-sm-3 control-label" for="authSecret">Auth Secret</label>
+                                            <input type="text" class="form-control" id="authSecret" value="{{sessions _id 'secret'}}">
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                                <div class="row scretKeyWrap">
+                                    <div class="col-md-12">
+                                        <!-- <div class="form-group"> -->
+                                            <label class="col-sm-3 control-label" for="authKey">Auth Key</label>
+                                            <input type="text" class="form-control" id="authKey" value="{{sessions _id 'key'}}">
+                                        <!-- </div> -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        {{/if}}
+                   </div>
+              </div>
+            </div>
+            {{/if}}
+
+
+            {{else}}
+                <div class="alert alert-warning">No platforms here.</div>
+            {{/each}}
+        </div>
+    </div>
+</template>

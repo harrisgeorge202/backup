@@ -1,0 +1,79 @@
+<template name="dashboard">
+    <section class="db-wrapper small-padding-section">
+        <div class="row dashboard-buttons bigger-buttons">
+          <h2> Analytics & Satisfaction Management </h2>
+          {{#if sessionsReady}}
+
+              {{#each sessions this}}
+                <div class="col-sm-4">
+                  <a href="{{pathFor 'dashboardList' _id=platformId}}"
+                      class="ibox-content db-blocks text-center dashboard-boxes" title="{{platformName platformId}}">
+                        <i class="dashboard-icon-nw"><img src="Analytics-Dashboard-Icon1.png" alt=""></i>
+                        <span>Analytics Dashboard</span>
+                    </a>
+                </div>
+                <!-- {{else}}
+                  <div class="col-sm-4">
+                    <a href="" class="ibox-content db-blocks text-center dashboard-boxes" title="{{platformName platformId}}">
+                          <i class="dashboard-icon-nw"><img src="Analytics-Dashboard-Icon1.png" alt=""></i>
+                          <span>Connect a Platform</span>
+                      </a>
+                  </div> -->
+              {{/each}}
+          {{/if}}
+            <div class="col-sm-4">
+                <a id="redirectTicketManagement" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img src="Ticket-Management-Icon1.png" alt=""></i>
+                    <span>Ticket Management</span>
+                </a>
+            </div>
+            <!-- <div class="col-sm-4">
+                <a href="" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img src="Sentiment-Analysis-Icon1.png" alt=""></i>
+                    <span>Sentiment Analysis</span>
+                </a>
+            </div> -->
+            {{#if sessionsReady}}
+              {{#each sessions this}}
+                <div class="col-sm-4">
+                    <a data-value="{{platformId}}" id="redirectSentimentAnalysis" class="ibox-content db-blocks text-center dashboard-boxes">
+                        <i class="dashboard-icon-nw"><img src="Sentiment-Analysis-Icon1.png" alt=""></i>
+                        <span>Sentiment Analysis</span>
+                    </a>
+                </div>
+              <!-- {{else}}
+              <div class="col-sm-4">
+                <a href=""
+                    class="ibox-content db-blocks text-center dashboard-boxes" title="{{platformName platformId}}">
+                      <i class="dashboard-icon-nw"><img src="Sentiment-Analysis-Icon1.png" alt=""></i>
+                      <span>Connect a Platform</span>
+                  </a>
+              </div> -->
+              {{/each}}
+            {{/if}}
+        </div>
+    </section>
+
+    <section class="db-wrapper small-padding-section" style="margin-bottom: 20px;">
+        <div class="row account-buttons">
+            <div class="col-sm-4">
+                <a href="{{pathFor 'profileSettings'}}" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img class="img-circle" src="Account-Details-Icon1.png" alt=""></i>
+                    <span>Account Details</span>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="{{pathFor 'platformsList'}}" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img src="Customization-Center-Icon1.png" alt=""></i>
+                    <span>Customization Center</span>
+                </a>
+            </div>
+            <div class="col-sm-4">
+                <a href="https://app.getfetch.ca/settings" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img class="img-circle" src="Notification-Settings-Icon1.png" alt=""></i>
+                    <span>Notification Settings</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</template>

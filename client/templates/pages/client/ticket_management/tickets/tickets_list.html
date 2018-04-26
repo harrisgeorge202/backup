@@ -1,0 +1,46 @@
+<template name="ticketsList">
+    <div id="tickets-list" class="tickets-list">
+        <div class="btn-group  btn-group-justified">
+            <div class="btn-group btn-group-lg">
+                <button class="btn btn-primary {{unresolvedActive}}" id="unresolved">Unresolved
+                    <span class="label label-pill label-danger label-as-badge">{{unresolvedTicketsCount}}</span>
+                </button>
+            </div>
+            <div class="btn-group btn-group-lg">
+                <button class=" btn  btn-primary {{resolvedActive}}" id="resolved">Resolved</button>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">{{currentSort}}
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#" id="rating-desc">Rating Descending</a>
+                </li>
+                <li>
+                    <a href="#" id="rating-asc">Rating Ascending</a>
+                </li>
+                <li>
+                    <a href="#" id="time-desc">Time Descending</a>
+                </li>
+                <li>
+                    <a href="#" id="time-asc">Time Ascending</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tickets scrollbar">
+            {{#if tickets.count}}
+                {{#each tickets}}
+                    {{> ticketItem}}
+                {{/each}}
+            {{else}} 
+                <hr />
+                <h2 class="text-center" style="font-size: 14px;"><i>No outstanding tickets</i></h2>
+                <!-- <h2 class="text-center"><i>No Tickets yet</i></h2> -->
+                <hr />
+             {{/if}} 
+
+        </div>
+    </div>
+</template>

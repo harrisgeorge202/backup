@@ -1,0 +1,42 @@
+<template name="packagesItem">
+
+    <div class="col-lg-4 wow zoomIn">
+        <div class="ibox">
+            <ul class="pricing-plan list-unstyled {{#if selectedItem}} selected {{/if}}">
+                <li class="pricing-title">
+                    {{name}}
+                </li>
+                <li class="pricing-desc">
+                    {{description}}
+                </li>
+                <li class="pricing-price">
+                    <span>${{price}}</span> / month
+                </li>
+                <li>
+                    {{monthlyEmailLimit}} emails per month
+                </li>
+                <li>
+                    24/7 Online Dashboard
+                </li>
+                <li>
+                    Unlimited Customer Engagements
+                </li>
+                <li>
+                    Up to 3 Questions
+                </li>
+                <li>
+                    Fully customizable
+                </li>
+    <!--
+                <li>
+                    {{#if selectedItem}}
+                        <a class="btn btn-primary btn-xs" href="#">Chosen</a>
+                    {{else}}
+                        <a class="btn btn-primary btn-xs" href="{{pathFor 'paymentDetails'}}">Choose</a>
+                    {{/if}}
+                </li>
+    -->
+            </ul>
+        </div>
+    </div>
+</template>

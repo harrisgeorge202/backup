@@ -1,0 +1,34 @@
+<template name="mainLayout">
+    <div class="bg"></div>
+     <div>
+       {{> topNavbar }}
+          <div class="container">
+  
+              <!-- Wrapper-->
+              <div id="wrapper">
+  
+                  <!-- Navigation -->
+                  <!--{{> navigation }}-->
+  
+                  <!-- Page wraper -->
+                  <div id="page-wrapper">
+  
+                      <!-- Page wrapper -->
+  
+                      <!-- Main view  -->
+                      {{> yield}}
+  
+                      <!-- Footer -->
+                      <!-- {{> footer }} -->
+  
+                  </div>
+                  <!-- End page wrapper-->
+  
+              </div>
+              <!-- End wrapper-->
+               {{> footer }}
+          </div>
+
+      </div>
+  </template>
+  

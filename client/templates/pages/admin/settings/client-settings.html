@@ -1,0 +1,302 @@
+<template name="clientSettingsForm">
+    <div class="list-item ibox float-e-margins platforms-view questions-view">
+        <div class="ibox-title">
+            <h2>Settings</h2>
+        </div>
+        <div class="ibox-content">
+            <div class="panel-group payments-method" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title-dupli">
+                        <h5 class="panel-title"> Add Client Settings </h5>
+                    </div>
+                    {{#if usersReady}}
+                      {{#if user}}
+                        <div class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <form id="client-add-settings-form" class="packages">
+                                            <div class="list-item ">
+
+
+
+
+
+                                            <div class="form-group">
+                                                    <div class="row">   
+                                                         <div class="col-md-6">
+                                                            <label class="control-label">Client Platform Selection </label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                        {{#if platformsExists}}
+                                                                {{#each platforms}}
+                                                        <label class="control-label">{{name}}</label>
+                                                            <div class="checkbox checkbox-base">
+                                                                <!-- {{#if equals fruit 'pineapple'}} -->
+                                                                {{#if compare _id}}
+                                                                <!-- <label>{{name}}</label> -->
+                                                                <input type="checkbox" name="platform"
+                                                                       value="{{_id}}" checked="">
+                                                                {{else}}
+                                                                <input type="checkbox" name="platform"
+                                                                       value="{{_id}}">
+                                                                {{/if}}
+                                                                <label for="checkbox1"></label> 
+                                                            </div>
+                                                            {{/each}}
+                                                        {{/if}}
+
+
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                {{#unless findPackage}}
+                                                <div class="form-group">
+                                                    <div class="row">   
+                                                        <div class="col-md-6">
+                                                            <label class="control-label">Client Package Selection: </label>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                    <select name="packageSelection" id="packageSelection" class="package-selection form-control m-b">
+                                                    <option value="">--No package selected--</option>
+                                                    {{#each packages}}
+                                                    <option value="{{_id}}">{{name}}</option>
+                                                    {{/each}}
+                                                    </select>    
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{/unless}}
+
+
+
+                                                
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="control-label">Enterprise Client Dashboard: </label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="switch-wrapper">
+                                                              {{#if user.settings.brandingCustomization}}
+                                                                <input type="checkbox" id="checkbox2" name="brandingCustomization"
+                                                                       value="{{user.settings.brandingCustomization}}" checked="">
+                                                              {{else}}
+                                                                <input type="checkbox" id="checkbox2" name="brandingCustomization"
+                                                                       value="{{user.settings.brandingCustomization}}">
+                                                              {{/if}}
+
+                                                                <label for="checkbox2"><span><em></em></span></label>
+                                                            </div>
+                                                             
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="control-label">SMS Notifications: </label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="switch-wrapper">
+                                                              {{#if user.settings.availableSMS}}
+                                                                <input type="checkbox" id="checkboxSMS" name="availableSMS"
+                                                                       value="{{user.settings.availableSMS}}" checked="">
+                                                              {{else}}
+                                                                <input type="checkbox" id="checkboxSMS" name="availableSMS"
+                                                                       value="{{user.settings.availableSMS}}">
+                                                              {{/if}}
+
+                                                                <label for="checkboxSMS"><span><em></em></span></label>
+                                                            </div>
+                                                             
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <label class="control-label">Scale Type</label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                        <select name="ratingSelection" id="ratingSelection" class="form-control">
+                                                            {{#if scale}}
+                                                                {{#if compareScale 'base8'}}
+                                                                    <option value="base6">6 Point Scale</option>
+                                                                    <option value="base8" selected>8 Point Scale</option>
+                                                                    <option value="base10">10 Point scale</option>
+                                                                {{else}}
+                                                                    {{#if compareScale  "base6"}}
+                                                                        <option value="base6" selected>6 Point Scale</option>
+                                                                        <option value="base8">8 Point Scale</option>
+                                                                        <option value="base10">10 Point scale</option>
+                                                                    {{else}}
+                                                                        <option value="base6">6 Point Scale</option>
+                                                                        <option value="base8">8 Point Scale</option>
+                                                                        <option value="base10" selected>10 Point scale</option>
+                                                                    {{/if}}
+                                                                 {{/if}}
+                                                            {{else}}
+                                                                <option value="">--Select --</option> 
+                                                                <option value="base6">6 Point Scale</option>                                                                
+                                                                <option value="base8">8 Point Scale</option>
+                                                                <option value="base10">10 Point scale</option>
+                                                            {{/if}}
+                                                            
+                                                        </select> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                
+                                                <!-- {{#if showData}}
+                                                
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div id="showDynamicPageLanding">
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label">Dynamic Landing Page: </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="switch-wrapper">
+                                                                {{#if user.settings.dynamicPageLanding}}
+                                                                    <input type="checkbox" id="checkbox3" name="dynamicPageLanding"
+                                                                        value="{{user.settings.dynamicPageLanding}}" checked="">
+                                                                {{else}}
+                                                                    <input type="checkbox" id="checkbox3" name="dynamicPageLanding"
+                                                                        value="{{user.settings.dynamicPageLanding}}">
+                                                                {{/if}}
+
+                                                                    <label for="checkbox3"><span><em></em></span></label>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div id="showTicketManagement">
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label">Ticket Management Dashboard: </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="switch-wrapper">
+                                                                    {{#if user.ticketDashboard}}
+                                                                        <input type="checkbox" id="checkbox4" name="ticketDashboard" value="{{user.ticketDashboard}}" checked="">
+                                                                    {{else}}
+                                                                        <input type="checkbox" id="checkbox4" name="ticketDashboard" value="{{user.ticketDashboard}}">
+                                                                    {{/if}}
+                                                                        <label for="checkbox4"><span><em></em></span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div id="showSentmentAnalysis">
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label">Sentiment Analysis Dashboard: </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="switch-wrapper">
+                                                                    {{#if user.sentimentAnalysisDashboard}}
+                                                                        <input type="checkbox" id="checkbox5" name="sentimentAnalysisDashboard" value="{{user.sentimentAnalysisDashboard}}" checked="">
+                                                                    {{else}}
+                                                                        <input type="checkbox" id="checkbox5" name="sentimentAnalysisDashboard" value="{{user.sentimentAnalysisDashboard}}">
+                                                                    {{/if}}
+                                                                        <label for="checkbox5"><span><em></em></span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{else}} -->
+                                                 
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div id="showDynamicPageLanding" style="display:none;">
+                                                            <div class="col-sm-6">
+                                                                <label class="control-label">Dynamic Landing Page: </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="switch-wrapper">
+                                                                {{#if user.settings.dynamicPageLanding}}
+                                                                    <input type="checkbox" id="checkbox3" name="dynamicPageLanding"
+                                                                        value="{{user.settings.dynamicPageLanding}}" checked="">
+                                                                {{else}}
+                                                                    <input type="checkbox" id="checkbox3" name="dynamicPageLanding"
+                                                                        value="{{user.settings.dynamicPageLanding}}">
+                                                                {{/if}}
+
+                                                                    <label for="checkbox3"><span><em></em></span></label>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                        <div class="row">
+                                                            <div id="showTicketManagement" style="display:none;">
+                                                                <div class="col-sm-6">
+                                                                    <label class="control-label">Ticket Management Dashboard: </label>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="switch-wrapper">
+                                                                        {{#if user.ticketDashboard}}
+                                                                            <input type="checkbox" id="checkbox4" name="ticketDashboard" value="{{user.ticketDashboard}}" checked="">
+                                                                        {{else}}
+                                                                            <input type="checkbox" id="checkbox4" name="ticketDashboard" value="{{user.ticketDashboard}}">
+                                                                        {{/if}}
+                                                                            <label for="checkbox4"><span><em></em></span></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div id="showSentmentAnalysis" style="display:none;">
+                                                                <div class="col-sm-6">
+                                                                    <label class="control-label">Sentiment Analysis Dashboard: </label>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="switch-wrapper">
+                                                                        {{#if user.sentimentAnalysisDashboard}}
+                                                                            <input type="checkbox" id="checkbox5" name="sentimentAnalysisDashboard" value="{{user.sentimentAnalysisDashboard}}" checked="">
+                                                                        {{else}}
+                                                                            <input type="checkbox" id="checkbox5" name="sentimentAnalysisDashboard" value="{{user.sentimentAnalysisDashboard}}">
+                                                                        {{/if}}
+                                                                            <label for="checkbox5"><span><em></em></span></label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <!-- {{/if}} -->
+                                                
+
+
+
+
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      {{else}}
+                        <p>Client not found</p>
+                      {{/if}}
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

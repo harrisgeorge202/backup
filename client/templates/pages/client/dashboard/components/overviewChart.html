@@ -1,0 +1,48 @@
+<template name="overviewChart">
+	
+		<div class="panel panel-question" style="border-color: #5cb85c;">
+			<div class="panel-heading" style="background-color: #5cb85c; border-color: #5cb85c; color: #ffffff">Overview</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-4 gaugeChart">
+						<div style="overflow: hidden; position: relative;">
+							<div class="gauge-chart-container" style="position: relative; bottom: -30px;">
+								<div id="chart-gauge" class="chart-gauge"></div>
+							</div>
+						</div>
+						<div id="gauge-overlay">
+							<div style="font-size: 18px;">Average Rating: <span style="font-size: 18px; font-weight: bold;">{{average}}</span></div>
+							<div style="font-size: 12px;">Based on <span style="font-size: 12px; font-weight: bold;">{{total}}</span> responses</div>
+						</div>
+					</div>
+					<div class="col-sm-8 lineChart">
+						<canvas id="lineChart" class="lineClass" width="490" height="240"></canvas>
+					</div>
+				</div>
+				<div class="row" style="padding: 15px; margin-left: 10px; margin-right: 10px;">
+					<div class="progress" style="height: 40px; margin-bottom: 0px;">
+						{{#if ratingSystemBase8}}
+						  <div class="progress-bar progress-bar-success" role="progressbar" style="width: {{positive}}%; background-color: #5cb85c;">
+							  <span style="position: relative; top: 25%;">{{positive}}% <span class="glyphicon glyphicon-thumbs-up"></span></span>
+						  </div>
+						  <div class="progress-bar progress-bar-danger" role="progressbar" style="width: {{negative}}%; background-color: #d9534f;">
+							  <span style="position: relative; top: 25%;">{{negative}}% <span class="glyphicon glyphicon-thumbs-down"></span></span>
+						  </div>
+						{{else}}
+						  <div class="progress-bar progress-bar-danger" role="progressbar" style="width: {{detractors}}%; background-color: #d9534f;">
+							  <span style="position: relative; top: 25%;">{{detractors}}%</span>
+						  </div>
+						  <div class="progress-bar progress-bar-warning" role="progressbar" style="width: {{passives}}%; background-color: #f0ad4e;">
+							  <span style="position: relative; top: 25%;">{{passives}}%</span>
+						  </div>
+						  <div class="progress-bar progress-bar-success" role="progressbar" style="width: {{promoters}}%; background-color: #5cb85c;">
+							  <span style="position: relative; top: 25%;">{{promoters}}%</span>
+						  </div>
+						{{/if}}
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</template>
+	

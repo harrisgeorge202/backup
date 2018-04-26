@@ -1,0 +1,101 @@
+<template name="adminPackageEdit">
+ 
+    <div class="list-item ibox float-e-margins platforms-view questions-view">
+        <div class="ibox-title">
+            <h2>Packages </h2>
+        </div>
+        <div class="ibox-content">  
+           <div class="panel-group payments-method" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading panel-title-dupli">
+                    <h5 class="panel-title"> Edit Package</h5>
+                    <span class="cancel pull-right"><i class="fa fa-times close-btn-default"></i></span>
+                </div>
+                <div class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                              <div class="list-item">
+                                  <form id="package-edit-form" class="packages">
+                                      <div class="list-item {{checkedClass}} {{editingClass}}">
+                                           <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-md-4">
+                                                     <label class="control-label">Name: </label>
+                                                 </div>
+                                                 <div class="col-md-8">
+                                                     <input class="form-control" id="name" name="name" type="text" value="{{name}}" placeholder="Name...">
+                                                 </div>
+                                             </div>                                              
+                                           </div>
+                                            <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-md-4">
+                                                     <label class="control-label">Description: </label>
+                                                 </div>
+                                                 <div class="col-md-8">
+                                                     <textarea class="form-control" id="description" name="description" value="{{description}}" placeholder="Description..." ></textarea>
+                                                 </div>
+                                             </div>                                              
+                                           </div>
+                                           <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-md-4">
+                                                     <label class="control-label">Monthly Email Limit: </label>
+                                                 </div>
+                                                 <div class="col-md-8">
+                                                     <input class="form-control" name="monthlyEmailLimit" type="text" value="{{monthlyEmailLimit}}"/>
+                                                 </div>
+                                             </div>                                              
+                                           </div>
+                                           <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-md-4">
+                                                     <label class="control-label">Price: </label>
+                                                 </div>
+                                                 <div class="col-md-8" title="Not changeable according to Stripe">
+                                                     <input class="form-control" disabled name="price" type="text" value="{{price}}"/>
+                                                 </div>
+                                             </div>                                              
+                                           </div>
+                                           <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-md-4">
+                                                     <label class="control-label">Public: </label>
+                                                 </div>
+                                                 <div class="col-md-8">
+                                                    <div class="checkbox checkbox-base">
+                                                        <input type="checkbox" id="checkbox1" name="public" value="{{name}}" checked="{{public}}">
+                                                        <label for="checkbox1"></label>
+                                                    </div>                 
+                                                 </div>
+                                             </div>                                              
+                                           </div>
+                                           <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-md-4">
+                                                     <label class="control-label">Status: </label>
+                                                 </div>
+                                                 <div class="col-md-8">
+                                                    <div class="checkbox checkbox-base">
+                                                        <input id="checkbox2" type="checkbox" name="status" value="{{name}}" checked="{{status}}"> 
+                                                        <label for="checkbox2"></label>
+                                                    </div>                 
+                                                 </div>
+                                             </div>                                              
+                                           </div>
+                                           <button type="submit" class="btn btn-primary">Save</button>
+                                      </div>
+                                  </form>
+                              </div>                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+        </div>
+       </div>
+    </div>
+</template>
+
+

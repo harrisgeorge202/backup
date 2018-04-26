@@ -1,0 +1,28 @@
+
+<template name="questionItem">
+    <div class="list-item question-item qstn-item {{checkedClass}} {{editingClass}}" id="{{_id}}">
+        {{#if strike}}
+        <div class="row">
+            <div class="col-xs-9">
+                <div class="form-group"><input type="text" class="form-control question-body" maxlength="70" value="{{text}}" placeholder="Question?"></div>
+            </div>
+            <div class="col-xs-3">
+                <a class="js-delete-item delete-item btn btn-outline btn-danger" href="#"><span class="fa fa-trash"></span></a>
+            </div>
+        </div>
+                
+        
+        {{else}}
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-9">
+                    <span class="strike-through form-control disabled-from" >{{text}}</span>
+                </div>
+                <div class="col-xs-3">
+                    <a class="js-delete-item delete-item btn btn-outline btn-danger" href="#"><span class="fa fa-trash"></span></a>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</template>

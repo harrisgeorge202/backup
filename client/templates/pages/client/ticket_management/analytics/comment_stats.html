@@ -1,0 +1,20 @@
+<template name="commentStats">
+    <h3>Average Comments per Ticket: {{averageCommentPerTicket}}</h3>
+    <h3>Most Active Staff</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td># of Comments</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rows}}
+                <tr>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.Count}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>

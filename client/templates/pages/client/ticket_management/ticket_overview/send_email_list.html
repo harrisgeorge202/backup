@@ -1,0 +1,17 @@
+<template name="sendEmailList">
+        <div class="panel panel-danger resolution-history">
+            <div class="panel-heading">
+                <h2>Email History</h2>
+            </div>
+            <div class="panel-body">
+                {{#if comments1.count}}
+                    {{#each comments1}}
+                        {{> sendItem}}
+                <hr/>
+                    {{/each}}
+                {{else}}
+                    <h5>No comments yet</h5>
+                {{/if}}
+            </div>
+        </div>
+    </template>

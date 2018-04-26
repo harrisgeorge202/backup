@@ -1,0 +1,139 @@
+<template name="adminPackagesList">
+    <div class="list-item ibox float-e-margins platforms-view questions-view">
+        <div class="ibox-title">
+            <h2>Packages
+                <button id="add-new" class="btn btn-primary pull-right">Add New</button>
+            </h2>
+        </div>
+        <div class="ibox-content">
+            {{#if editingOne}}
+                <div class="panel-group payments-method" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading panel-title-dupli">
+                            <h5 class="panel-title"> Add New Form </h5>{{testThisX}}
+                            <span class="cancel pull-right"><i class="fa fa-times close-btn-default"></i></span>
+                        </div>
+                        <div class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form id="package-add-form" class="packages">
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Name: </label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" id="name" name="name"
+                                                                   type="text" value="{{name}}" >
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Description: </label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                               <textarea class="form-control" id="description" name="description" value="{{description}}" ></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Monthly Email Limit: </label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" name="monthlyEmailLimit"
+                                                                   type="text" value="{{monthlyEmailLimit}}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Price: </label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" name="price" type="text"
+                                                                   value="{{price}}" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Public: </label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="checkbox checkbox-base">
+                                                                <input type="checkbox" id="checkbox1" name="public"
+                                                                       value="{{name}}" checked="{{public}}">
+                                                                <label for="checkbox1"></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <label class="control-label">Status: </label>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <div class="checkbox checkbox-base">
+                                                                <input type="checkbox" id="checkbox2" name="status"
+                                                                       value="{{name}}" checked="{{status}}">
+                                                                <label for="checkbox2"></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div class="list-packages">
+                    <section class="packages-list-item">
+                        <div class="row">
+                            {{#each packages}}
+                                <div class="col-sm-4">
+                                    <div class="item widget style1 navy-bg">
+                                        <h2>{{name}}</h2>
+
+                                        <div>Monthly Email Limit: {{monthlyEmailLimit}}</div>
+                                        <div>Price: {{price}}</div>
+                                        <div>Public: {{#if public}} yes {{else}} no {{/if}}</div>
+                                        <div>Status: {{#if status}} active {{else}} inactive {{/if}}</div>
+                                        <div class="action-btns">
+                                            <a href="{{pathFor 'adminPackageEdit'}}"
+                                               class="list-package {{activeListClass}} btn btn-white btn-sm"
+                                               title="{{name}}">
+                                                Edit <!-- <strong> {{name}} </strong> -->
+                                            </a>
+                                            <button class="delete btn btn-danger btn-sm" id="{{_id}}"
+                                                    data-toggle="modal" data-target="#deleteConfirmation">Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{else}}
+
+                                <div class="col-sm-12">
+                                    <div class="alert alert-warning no-margins">No packages here.</div>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </section>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

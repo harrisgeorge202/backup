@@ -1,0 +1,17 @@
+<template name="commentList">
+  <div>
+    {{#each responseListData}}
+        {{> sentimentCommentItem this}}
+    {{/each}}
+
+    {{#if noMore}}
+      <div class="alert alert-warning" style="text-align: center; vertical-align: middle; padding: 5px;">
+          No more comments found!
+      </div>
+    {{else}}
+      <div style="text-align: center;">
+          <button id="show-more" type="button" class="btn btn-primary" style="background-color: #337ab7; border-color: #2e6da4;">Show More</button>
+      </div>
+    {{/if}}
+  </div>
+</template>

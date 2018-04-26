@@ -1,0 +1,17 @@
+<template name="commentsList">
+    <div class="panel panel-danger resolution-history">
+        <div class="panel-heading">
+            <h2>Resolution History</h2>
+        </div>
+        <div class="panel-body">
+            {{#if comments.count}}
+                {{#each comments}}
+                    {{> commentItem}}
+            <hr/>
+                {{/each}}
+            {{else}}
+                <h5>No comments yet</h5>
+            {{/if}}
+        </div>
+    </div>
+</template>

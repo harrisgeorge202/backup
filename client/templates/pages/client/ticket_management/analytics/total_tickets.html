@@ -1,0 +1,20 @@
+<template name="totalTickets">
+    <h3>Total Number of Tickets: {{all}}</h3>
+    <ul>
+        <li>Today: {{today}}
+            <span class="glyphicon {{todayTrend}}"></span>
+        </li>
+        <li>Last 7 days: {{week}}
+            <span class="glyphicon {{weekTrend}}"></span>
+        </li>
+        <li>Last 30 days: {{month}}
+            <span class="glyphicon {{monthTrend}}"></span>
+        </li>
+        <li>Last 90 days: {{quarter}}
+            <span class="glyphicon {{quarterTrend}}"></span>
+        </li>
+        <li>Last Year: {{year}}
+            <span class="glyphicon {{yearTrend}}"></span>
+        </li>
+    </ul>
+</template>

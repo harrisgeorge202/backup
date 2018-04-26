@@ -1,0 +1,17 @@
+<template name="sendemail">
+    <form name="email" class="comment-section">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h2>Send Them An Email</h2>
+            </div>
+            <div class="panel-body">
+
+                <div class="form-group {{errorClass 'body2'}}">
+                    <textarea name="body2" id="body2" class="form-control" rows="3"></textarea>                
+                    <span class="help-block">{{errorMessage 'body2'}}</span>
+                </div>
+                <button class="btn btn-warning" type="submit" name="status" id="save" value="save">Send Email</button>
+            </div>
+        </div>
+    </form>
+</template>

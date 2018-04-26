@@ -1,0 +1,333 @@
+/*
+ *
+ *   INSPINIA - Responsive Admin Theme
+ *   Meteor version
+ *   version 2.3
+ *
+*/
+
+// Google Fonts
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400');
+
+// Variables, Mixins
+@import "globals/variables.import.less";
+@import "globals/mixins.import.less";
+
+// INSPINIA Theme Elements
+@import "globals/typography.import.less";
+@import "globals/navigation.import.less";
+@import "globals/top_navigation.import.less";
+@import "globals/buttons.import.less";
+@import "globals/badgets_labels.import.less";
+@import "globals/elements.import.less";
+@import "globals/sidebar.import.less";
+@import "globals/base.import.less";
+@import "globals/pages.import.less";
+@import "globals/chat.import.less";
+@import "globals/metismenu.import.less";
+@import "globals/spinners.import.less";
+
+// Landing page
+@import "globals/landing.import.less";
+
+// RTL Support
+@import "globals/rtl.import.less";
+
+// For demo only - config box style
+@import "globals/theme-config.import.less";
+
+// INSPINIA Skins
+@import "globals/skins.import.less";
+@import "globals/md-skin.import.less";
+
+// Media query style
+@import "globals/media.import.less";
+
+// Custom style
+// Your custom style to override base style
+@import "globals/custom.import.less";
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #f1f1f1;
+  // background: rgba(250,250,250,1);
+  // background: -moz-linear-gradient(-45deg, rgba(250,250,250,1) 0%, rgba(181,218,243,1) 100%);
+  // background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(250,250,250,1)), color-stop(100%, rgba(181,218,243,1)));
+  // background: -webkit-linear-gradient(-45deg, rgba(250,250,250,1) 0%, rgba(181,218,243,1) 100%);
+  // background: -o-linear-gradient(-45deg, rgba(250,250,250,1) 0%, rgba(181,218,243,1) 100%);
+  // background: -ms-linear-gradient(-45deg, rgba(250,250,250,1) 0%, rgba(181,218,243,1) 100%);
+  // background: linear-gradient(135deg, rgba(250,250,250,1) 0%, rgba(181,218,243,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#b5daf3', GradientType=1 );
+}
+
+.footer {
+  border-radius: 5px;
+  margin-bottom: -5px;
+  background: #b9def8;
+  color: #f1f1f1;
+  position:relative;
+  // border-radius: 5px;
+  // margin-bottom: -5px;
+}
+
+#page-wrapper {
+  margin:0;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.zoomIn  {
+  background-color: #fff;
+  color: #676a6c;
+  font-family: "Open Sans",helvetica,arial,sans-serif;
+}
+
+.breadcrumb li a {
+  text-transform: capitalize;
+}
+
+span.strike-through {
+  text-decoration: line-through;
+}
+
+
+.login-container{
+   #login-form{
+      padding-bottom:15px;
+    }
+    .form-control{     
+      padding: 10px 12px;
+      height: 40px;
+      font-weight: 400;
+    }
+    .btn{
+      padding: 10px 12px;
+      font-weight:700;
+    }
+    a{
+      small{
+        font-weight:400;
+        font-size:13px;
+      }
+    }
+    .text-muted{
+      small{
+        font-weight:400;
+        font-size:13px;
+      }
+    }
+    .btn-white{
+      font-size:13px;
+    }
+    .m-b {
+        margin-bottom: 25px;
+    }
+    label.error {
+      margin-left: 0;
+      font-size: 10px;
+      width: 100%;
+      text-align: left;
+      font-weight:400;
+     }
+     .form-control.error{
+          border:1px solid #e5e6e7;
+     }
+}
+
+.login-container .v-center-bx {
+  position: relative;
+  left: 0px;
+  width: 30vw;
+  margin: auto;
+  top: 25%;
+}
+
+.login-container img {
+   //height: 12.5vh;
+}
+
+.login-container button {
+  font-size: 1.25em;
+}
+
+.login-header {
+ // margin-top: -50px;
+ // margin-bottom: 40px;
+}
+
+.login-subtext {
+  margin-top: 24px;
+  color: #2489cf;
+}
+
+.login-image {
+   background-image:url('https://app.getfetch.ca/login-image.png');
+   background-size: cover;
+  //position: absolute;
+ // right: 0px;
+ // width: 60vw;
+   height: 100%;
+}
+
+.login-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.login-image-subtext {
+  position: absolute;
+  bottom: 10%;
+  left: 25px;
+  color: white;
+}
+
+.login-image-subtext h1 {
+  font-size:45px;
+  margin: 5px;
+}
+
+.heavier {
+  font-weight:400;
+  margin-bottom: 20px;
+}
+
+.heaviest {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.login-wrapper{
+  height: 100%;
+  background-color: #fff;
+}
+.login-header{
+  h2{
+    img{
+       width:80%;
+    }
+  }
+}
+.login-image-subtext h1 {
+   font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+}
+@media only screen and (max-width:480px) {
+  .login-image{
+    display:none;
+  }
+   .login-container{
+    width:100% !important;   
+   }
+   .login-container .v-center-bx {
+      width: 70vw;
+  }
+}
+@media only screen and (max-width:767px) {
+  .login-wrapper{
+   // border:solid 5px red;
+  }
+    .login-container{
+     width:50%;
+     float:left;
+     background-color:#fff;
+  }
+  .login-image{
+     width:50%;
+     float:left;
+     height:100%;
+     position: relative;
+  }
+  .login-image{
+     width:50%;
+     float:left;
+     height:100%;
+     position: relative;
+  }
+  .login-subtext {
+      margin-top: 0;
+      font-size: 15px;
+  }
+  .login-image-subtext h1 {
+      font-size: 50px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .login-wrapper{
+      //border:solid 5px green ;
+      height:100vh;
+      //overflow: hidden;
+  }
+  .login-container{
+     width:50%;
+     float:left;
+     background-color:#fff;
+     margin-top:100px;
+
+  }
+  .login-image{
+     width:50%;
+     float:left;
+     height:100%;
+     position: relative;
+  }
+  .login-subtext {
+      margin-top:20px;
+      margin-bottom: 30px;
+      font-size: 22px;
+  }
+  .login-image-subtext h1 {
+      font-size: 45px;
+      line-height:55px; 
+  }
+  .login-container {
+    width: 50%;
+    float: left;
+    background-color: #fff;
+    margin-top: 36px;
+  }
+}
+@media only screen and (min-width: 980px) {
+  .login-container{
+    width:40%;
+  }
+  .login-image{
+    width:60%;
+  }
+  .login-image img {
+      height: 100%;
+      width:auto;
+  }
+}
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 1024px) {
+  .login-container {
+    //width: 100vw;
+  }
+
+  .login-container .v-center-bx {
+    //width: 90%;
+  }
+
+  .login-image {
+    //display: none;
+  }
+}
+@media only screen and (min-width: 1000px) {
+ .login-container {
+    margin-top:65px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+ .login-container {
+    margin-top:100px;
+  }
+}

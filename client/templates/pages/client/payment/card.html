@@ -1,0 +1,20 @@
+<template name="paymentCard">
+    <div class="payment-card">
+        <i class="fa fa-cc-visa {{brand}} fa-cc-mastercard fa-cc-discover payment-icon-big text-success"></i>
+        <h2>
+            **** **** **** {{last4}}
+        </h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <small>
+                    <strong>Expiry date:</strong> {{exp_month}} / {{exp_year}}
+                </small>
+            </div>
+            <div class="col-sm-6 text-right">
+                <small>
+                    <strong>{{brand}} Name:</strong> {{name}}
+                </small>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,56 @@
+<template name="ticketItemView">
+    <div class="panel panel-success ticket-view">
+        <div class="panel-heading">
+            <h2>Ticket Overview</h2>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="hauthor-overflow">
+                            <span class="ticket-label label label-warning">{{rating}}</span>
+                            <div class="info">
+                                <h2>{{author}}</h2>
+                                {{#if getReservationNumber packetId }} 
+                                    <p><span>Res # : </span>{{ getReservationNumber packetId }}</p>
+                                {{else}}
+                                    <p style="padding:9px"></p>
+                                {{/if}}
+                            </div> 
+                         <div class="created">
+                                <p>Created {{livestamp created}}</p>
+                         </div>                              
+                    </div>
+                    <div class="content-info">
+                        <p>
+                            <span>Email :</span>
+                            {{ email}}
+                        </p>
+                        {{#if getPhoneNumber packetId }} 
+                            <p>
+                                <span>Phone # :</span>
+                                {{ getPhoneNumber packetId }}
+                            </p>
+                        {{/if}}
+                        {{#if getRoomNumber packetId }} 
+                        <p>
+                            <span>Room # :</span>
+                            {{ getRoomNumber packetId }}
+                        </p>
+                        {{/if}}
+                        <p>
+                            <span>Date Created :</span>
+                            {{createdFormat}}
+                        </p>
+                    </div>
+                    <!-- <p >{{email}}</p> -->
+                </div>
+                <!-- <div class="col-sm-6">
+                    <p class="pull-right">Created {{livestamp created}}</p>
+                    <div class="clearfix"></div>
+                    <p class="pull-right">{{createdFormat}}</p> 
+                </div> -->
+            </div>
+            <p class="well">{{comment}}</p>
+        </div>
+    </div>
+</template>

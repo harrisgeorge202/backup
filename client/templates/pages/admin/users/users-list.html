@@ -1,0 +1,130 @@
+<template name="adminUsersList">
+
+    <div class="ibox client-list">
+        <div class="ibox-title">
+            <h5>Client List</h5>
+            <!--            <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form>-->
+        </div>
+        <div class="ibox-content">
+            {{#if usersReady}}
+                <div class="search-form">
+                    <form id="search-user-form">
+                        <div class="input-group">
+                            <input type="text" placeholder="Enter name to search" value="{{search}}" name="search"
+                                   class="form-control input-lg">
+
+                            <div class="input-group-btn">
+                                <button class="btn btn-lg btn-primary" type="submit">
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            <div></div>
+                <div class="alert alert-warning alert-dismissible warning-margin-top" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>Warning!</strong> Changing package of a user will reset everything related to a package.
+                </div>
+                <div class="list-users lst-user-nw">
+                    <div class="row client-list-row">
+                        {{#each users searchCopy}}
+                            {{>Ulist}}
+                        {{else}}
+                            <div class="col-sm-12">
+                                <div class="alert alert-warning no-margins">No Users here.</div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+
+<template name="Ulist">
+    <div class="col-sm-6 col-md-4 col-lg-3 client-cols-child">
+        <div class="widget-head-color-box navy-bg p-lg text-center">
+            {{#with profile}}
+                <div class="m-b-md">
+                    <h2 class="font-bold no-margins">{{name}}</h2>
+                </div>
+            {{/with}}
+            <!--<figure class="client-list-dp">
+                <img alt="profile" src="/user.png">
+            </figure>-->
+            <div>
+                {{#each emails}}
+                    <span>Email: {{address}}</span>
+                {{/each}}
+            </div>
+
+            {{#if packageChosen}}
+                <h3>{{getPackageName packageId}}</h3>
+
+                <select name="packageSelection" id="packageSelection" class="package-selection form-control m-b">
+                    <option value="">--No package selected--</option>
+                    {{#each packages}}
+                        <option {{testDee _id}} value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+
+                <p>Emails sent: {{emailsSent packageEmailLimit monthlyEmailLimit}}</p>
+
+                <p>Emails remaining: {{monthlyEmailLimit}}</p>
+            {{else}}
+
+                <h3>No package selected</h3>
+
+                <p>Setting new package for this user is not possible!</p>
+                <p>User hasn't subscribed to any packages. Hence, the payment details are missing.</p>
+
+            {{/if}}
+
+        </div>
+        <div class="widget-text-box">
+            {{#with profile}}
+                {{#if storeName}}
+                    <h4 class="media-heading">{{storeName}}</h4>
+                {{else}}
+                    <h4 class="media-heading">---</h4>
+                {{/if}}
+                {{#if phone}}
+                    <p>Phone: {{phone}}</p>
+                {{else}}
+                    <p>Phone: <span class="lbl-txt-md">---</span></p>
+                {{/if}}
+                {{#if website}}
+                    <p>Website: <a target="_blank" href="{{website}}"> {{website}}</a></p>
+                {{else}}
+                    <p>Website: <span class="lbl-txt-md">---</span></p>
+                {{/if}}
+            {{/with}}
+            <div class="client-bx-hd-btns">
+                {{#if status}}
+                    <button class="btn status btn-primary" title="Change status">Active</button>
+                {{else}}
+                    <button class="btn danger-has status btn-danger" title="Change status">Inactive</button>
+                {{/if}}
+                <a href="{{pathFor 'adminDashboardOuterList'}}"
+                   class="list-platform btn btn-primary"
+                   title="View statistics">
+                    View statistics&nbsp; <i
+                        class="fa fa-angle-double-right"></i>
+                </a>
+                <a href="{{pathFor 'adminClientSettings'}}"
+                   class="list-platform"
+                   title="Settings">
+                    Settings&nbsp; <i
+                        class="fa fa-angle-double-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</template>

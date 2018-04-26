@@ -1,0 +1,28 @@
+<template name="gaugeChart">
+  <head>
+    <style>
+      #chart-gauge {
+        margin-right: 0px;
+      }
+
+      .gaugeChart {
+        overflow: hidden;
+        position: relative;
+
+      }
+
+    </style>
+  </head>
+  <div class="panel panel-warning" style="min-width: 0px; height: 240px; width: 49%; float: left;  border-color: #5cb85c;">
+    <div class="gaugeChart"  style="width: 100%">
+      <div class="panel-heading" style="background-color: #5cb85c; border-color: #5cb85c; color: #ffffff">Sentiment Analysis</div>
+      <div class="panel-body" id="gauge-chart-container">
+        <div id="chart-gauge" class="chart-gauge" style="padding-left: 79px;"></div>
+        <div id="gauge-overlay" style="margin-left: 90px; margin-top: 15px;">
+          <div style="font-size: 22px; text-align: left;">Sentiment Score: <span style="font-size: 24px; font-weight: bold;">{{score}}</span> </div>
+          <div style="font-size: 20px;  font-style: italic; padding-left: 0px; text-align: left;">{{comment}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

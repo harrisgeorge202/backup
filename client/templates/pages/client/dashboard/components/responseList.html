@@ -1,0 +1,39 @@
+<template name="responseList">
+    
+        <div style="margin-top: 15px; margin-bottom: 15px; margin-left: 15px; margin-right: 15px">
+            <div class="row" style="text-align: center;">
+                {{#if ratingSystemBase8}}
+                    <button id="all" type="button" class="btn btn-info" style="width: 100px; float: left; background-color: #31b0d5; border-color: #269abc;">All</button>
+                    <button id="good" type="button" class="btn btn-success" style="width: 100px; margin:0 auto; background-color: #5cb85c; border-color: #4cae4c;">Positive</button>
+                    <button id="bad" type="button" class="btn btn-danger" style="width: 100px; float: right; background-color: #d9534f; border-color: #d43f3a;">Negative</button>
+                {{else}}
+                    <button id="all" type="button" class="btn btn-info" style="font-size: 10px; width: 75px; float: left; background-color: #31b0d5; border-color: #269abc;">All</button>
+                    <button id="promoters" type="button" class="btn btn-success" style="font-size: 10px; width: 75px; margin:0 auto; background-color: #5cb85c; border-color: #4cae4c;">Promoters</button>
+                    <button id="passives" type="button" class="btn btn-warning" style="font-size: 10px; width: 75px; margin:0 auto; background-color: #f0ad4e; border-color: #eea236;">Passives</button>
+                    <button id="detractors" type="button" class="btn btn-danger" style="font-size: 10px; width: 75px; float: right; background-color: #d9534f; border-color: #d43f3a;">Detractors</button>
+                {{/if}}
+            </div>
+        </div>
+        <h4 style="text-align: center;">Showing {{filterType}} responses</h4>
+    
+        <!-- Div container to hide scroll bar in its child (parent hidden, child scroll plus bigger width and padding-right) -->
+        <div style="width: 322px; overflow: hidden">
+            <div style="height: {{panelHeight}}px; width: 342px; overflow-x: hidden; overflow-y: scroll; padding-right: 20px;">
+                {{#each responseListData}}
+                    {{> responseItem this}}
+                {{/each}}
+    
+                {{#if noMore}}
+                    <div class="alert alert-warning" style="text-align: center; vertical-align: middle; padding: 5px;">
+                        No more rated responses available!
+                    </div>
+                {{else}}
+                    <div style="text-align: center;">
+                        <button id="show-more" type="button" class="btn btn-primary" style="width: 100px; background-color: #337ab7; border-color: #2e6da4;">Show More</button>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    
+    </template>
+    

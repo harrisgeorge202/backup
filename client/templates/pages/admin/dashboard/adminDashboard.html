@@ -1,0 +1,18 @@
+<template name="adminDashboard">
+    <section class="db-wrapper"><h1 class="margin-btm-dash dash-head">Admin Dashboard</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="{{pathFor 'profileSettings'}}" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img src="ControlPanelIcon.gif" alt=""></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="col-sm-6">
+                <a href="{{pathFor 'platformsList'}}" class="ibox-content db-blocks text-center dashboard-boxes">
+                    <i class="dashboard-icon-nw"><img src="ConnectYourStoreIconGif.gif" alt=""></i>
+                    <span>Connect My Store</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</template>

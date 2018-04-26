@@ -1,0 +1,17 @@
+<template name="ticketItem">
+    <a id="{{_id}}" href="{{pathFor 'ticketView'}}" class="ticket btn btn-block btn-default {{ticketStatusClass status}} {{isActive}}">
+        <div class="in-ticket">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h3 class="pull-left author-overflow">{{author}}</h3>
+                </div>
+                <div class="col-sm-4">
+                    <p>{{livestamp created}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <span class="rating badge pull-right"> {{rating}}</span>
+                </div>
+            </div>
+        </div>
+    </a>
+</template>

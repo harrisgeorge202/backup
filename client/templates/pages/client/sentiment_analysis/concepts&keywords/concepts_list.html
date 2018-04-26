@@ -1,0 +1,25 @@
+<template name="conceptsList">
+  <div class="panel panel-warning" style="min-width: 0px; width: 49%; float: left;  border-color: #0a5a92;">
+    <div class="panel-heading" style="background-color: #0a5a92; border-color: #0a5a92; color: #ffffff">Trending Concepts</div>
+    <div class="panel-body" id="concept-list" style="position: relative; padding: 0px; max-height: 393px; overflow-y: scroll;">
+      <ul style="list-style: none; margin: 0; padding-left: 0px; border: 1px solid #e0e0e0; border-radius: 2px; overflow: hidden; position: relative;">
+        <li style="font-weight: bold; font-size: 16px; padding: 10px 20px 10px 20px; border-bottom: 1px solid #e0e0e0; line-height: 1.5rem; margin: 0; border: 1px solid #e0e0e0; position: relative;">
+          <div style="text-align: left; color: black;">Concept<div style="float: right; text-align: right; color: black;">Relevance</div></div>
+        </li>
+        {{#each concepts}}
+          {{> concept}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>
+
+<template name="concept">
+  <li id="concept-item" style="padding: 5px; border-bottom: 1px solid #e0e0e0; line-height: 1.5rem; margin: 0; border: 1px solid #e0e0e0; position: relative;">
+    <div id="concept-text" style="text-align: left;">{{text}}
+      <div style="float: right; text-align: left; color: black; width: 100px; border-radius: 4px; background-color: #EEEEEE;">
+        <div style="background-color: #3CA2FF; width: {{relevance}}px; border-radius: 4px;  padding-left: 4px; color: white; font-style: italic;">{{relevance}}</div>
+      </div>
+    </div>
+  </li>
+</template>

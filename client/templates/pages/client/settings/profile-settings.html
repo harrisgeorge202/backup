@@ -1,0 +1,121 @@
+<template name="profileSettings">
+
+    <!-- {{> pageHeading title='Profile'}} -->
+    <div class="ibox float-e-margins settings-view">
+        <div class="ibox-content">
+           <div class="row">
+               <div class="col-md-9">
+                    <form role="form" name="payment-form" id="settings-form">
+                        <div width="100"><p class="error_label"></p></div>
+                        <div class="form-group">
+                            <p>Name</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="name" value="{{name}}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p>Website URL</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="alert alert-warning alert-my-profile">Please make sure you include the full URL, including http://</div>
+                                    <input type="text" class="form-control" name="website" value="{{website}}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p>Phone number</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="phone" value="{{phone}}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p>Storename</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="store-name" value="{{storeName}}"/>
+                                </div>
+                            </div>
+                        </div>
+                         
+                        <div class="form-group">
+                            <p>Receive Email Notifications:</p>
+                                <div id="emails">
+                                    <div class="row">    
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="newEmail" name="email" value=""/>
+                                            </div>
+                                            <div class="col-xs-3"> 
+                                                 <button id="addEmail" class="js-add-item add-item btn btn-warning" type="button">Add Emails
+                                                </button> 
+                                            </div>                                             
+                                        </div> 
+                                    </div>
+
+                            <div id="emails">
+                                 {{#each findEmail}}
+                                    <div class="row">   
+                                        
+                                            <div class="col-md-6">
+                                                <input type="text" id="newEmails" class="form-control" name="emails[]" value="{{this}}" disabled/>
+                                            </div>
+                                            <div class="col-xs-3"> 
+                                                 <button id="removeEmail" class="js-delete-item delete-item btn btn-outline btn-danger" type="button">Remove</button> 
+                                            </div>                                             
+                                        </div> 
+                                    
+                                    {{/each}}  
+                                    </div>   
+                            </div>      
+                            <div class="form-group">
+                                <p>Receive SMS Notifications:</p>
+                                    <div id="smses">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="newSms" name="sms" value="" />
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <button id="addSms" class="js-add-item add-item btn btn-warning" type="button">Add SMS</button>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                <div id="smses">
+                                    {{#each findSms}}
+                                        <div class="row">
+    
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control smses" name="smses[]" value="{{this}}" disabled />
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <button id="removeEmail" class="js-delete-item delete-item btn btn-outline btn-danger" type="button">Remove</button>
+                                            </div>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>  
+
+
+
+                          <br>
+
+                           <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button class="btn btn-primary" type="submit">Update profile
+                                </button>
+                            </div>
+                        </div> 
+                           </div>
+                        </form> 
+
+                                    
+               </div>
+           </div>
+        </div>
+    </div>
+    
+</template>

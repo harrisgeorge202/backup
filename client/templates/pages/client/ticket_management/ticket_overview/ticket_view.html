@@ -1,0 +1,82 @@
+<template name="ticketView">
+    <div>
+        {{> ticketItemView}}
+    </div>
+   
+
+
+
+<!-- 
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-8">
+            <label class="control-label">Staff Notes </label>
+        </div>
+        <div class="col-sm-4">
+            <div class="switch-wrapper">
+              {{#if emailNotification}}
+                <input type="checkbox" id="checkbox1" name="emailNotification"
+                       value="{{user.settings.emailNotification}}" checked="">
+              {{else}}
+                <input type="checkbox" id="checkbox1" name="emailNotification">
+              {{/if}}
+                <label for="checkbox1"><span><em></em></span></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="form-group">
+        <div class="row">
+            <div class="col-sm-8">
+                <label class="control-label"> Email </label>
+            </div>
+            <div class="col-sm-4">
+                <div class="switch-wrapper">
+                  {{#if emailNotification}}
+                    <input type="checkbox" id="checkbox2" name="emailNotification"
+                           value="{{user.settings.emailNotification}}" checked="">
+                  {{else}}
+                    <input type="checkbox" id="checkbox2" name="emailNotification">
+                  {{/if}}
+                    <label for="checkbox2"><span><em></em></span></label>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+
+    <!-- <div id="show" style="display: none;"> -->
+            <div class="comments">
+                    {{> commentsList}}
+                    {{> sendEmailList}}
+
+                </div>
+<!-- </div> -->
+
+
+
+<!-- <div id="show2" style="display: none;">
+        <div class="comments">
+                {{> sendEmailList}}
+            </div>
+</div> -->
+
+
+        {{#if isResolved}}
+        <div class="comment-form">
+            {{> commentSubmit}}
+            {{> sendemail}}
+        </div>
+    {{/if}}
+</template>
+
+
+
+
+
+

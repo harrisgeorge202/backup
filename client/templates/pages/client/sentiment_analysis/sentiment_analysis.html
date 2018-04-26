@@ -1,0 +1,110 @@
+<template name='sentimentAnalysis'>
+  <div class="ibox float-e-margins" style="width: 100%; margin-bottom: 0">
+		<div class="row" style="width: 100%;">
+			<div class="col-md-12" style="padding: 0px;">
+				<div class="ibox float-e-margins" style="overflow-x: auto; overflow-y: hidden;">
+					<div class="search-form" style="margin-top: 20px; margin-bottom: 10px; min-width: 1140px;">
+            <form id="filter-days" style="float: left; width: 30%; ">
+							<div class="input-group">
+								<div id="reportrange" class="datepicker">
+	    						<i class="glyphicon glyphicon-calendar fa fa-calendar ico-calendar"></i>&nbsp;
+	    						<span>Filter by Date</span> <b class="caret caret-calendar"></b>
+								</div>
+								<div class="input-group-btn">
+									<button class="btn btn-lg btn-primary innerpage-btn" type="submit">
+										Apply Dates
+									</button>
+								</div>
+ 							</div>
+            </form>
+            <span class="header-inner-logo"><img src="/powered_by_watson.png" alt=""></span>
+            <form id="filter-search" style="float: right; width: 40%;">
+              <div class="input-group">
+                <input type="text" class="form-control" id="searchBox" name="search" value={{searchbarText}} style="width: 90%; margin-left: 30px; background-color: rgba(0, 0, 0, 0); border-color: #3CA2FF">
+                <div class="input-group-btn" style="padding-right: 16px;">
+									<button class="btn btn-lg btn-primary innerpage-btn" style="border-radius: 4px;" type="submit">
+										Search
+									</button>
+								</div>
+              </div>
+            </form>
+					</div>
+
+          <div class="dashboard-container">
+            <div class="row" style="margin: 0px;">
+              <div class="col-md-8" id="left-side-container" style="padding-right: 0px;">
+                <div style="margin-bottom: 20px;">
+                  {{> gaugeChart}}
+                  {{> barChart}}
+                </div>
+                <div>
+                    {{#if questionsAvailable}}
+                      {{#if ratedQuestionsAvailable}}
+                        {{#if checkTotalCommentExist}}
+                          {{> conceptsList}}
+                          {{> keywordsList}}
+                        {{else}}
+                          <div class="alert alert-warning">
+                            No responses yet for this platform, nothing to show!
+                          </div>
+                        {{/if}}
+                      {{else}}
+                        <div class="alert alert-warning">
+                          No responses yet for this platform, nothing to show!
+                        </div>
+                      {{/if}}
+                  {{else}}
+                    <div class="alert alert-warning">
+                      No questions active for this platform!
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="col-md-4" id="right-side-container">
+                {{#if questionsAvailable}}
+                  {{#if ratedQuestionsAvailable}}
+                    {{#if checkCommentExist}}
+                      {{#if firstLoad}}
+                        {{#if filteredQuestionsAvailable}}
+                          {{#if filteredQuestionsReady}}
+                            {{> commentAnalysis inputData=(filteredQuestions)}}
+                          {{else}}
+                            <div class="alert alert-warning">
+                              Loading comments, please wait...
+                            </div>
+                            <div class="loader"></div>
+                          {{/if}}
+                        {{else}}
+                          <div class="alert alert-warning">
+                            No comments found for the selected period.
+                          </div>
+                        {{/if}}
+                      {{else}}
+                        <div class="alert alert-warning">
+                            Loading, please wait...
+                        </div>
+                        <div class="loader"></div>
+                      {{/if}}
+                    {{else}}
+                      <div class="alert alert-warning">
+                        No responses yet for this platform, nothing to show! 
+                      </div>
+                    {{/if}}
+                  {{else}}
+                    <div class="alert alert-warning">
+                      No responses yet for this platform, nothing to show!1212
+                    </div>
+                  {{/if}}
+                {{else}}
+                  <div class="alert alert-warning">
+                    No questions active for this platform!
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

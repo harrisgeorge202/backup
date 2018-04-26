@@ -1,0 +1,32 @@
+<template name="sentimentCommentItem">
+    {{#if checkCommentExist}}
+      {{#if analysisReady}}
+      <div class="well well-sm commentItem" style="overflow-x: hidden; border-color: {{sentimentColor}}; border-top: 0px; min-height: 0px; width: 100%; padding: 0px;">
+        <div style="color: white; font-size: 11px; border-radius: 4px 4px 0px 0px; background-color: {{sentimentColor}}; width: 100%; height: 15px; text-align: center;">
+          {{overallSentiment}}
+        </div>
+        <div class="comment-row well well-sm" style="margin: 0px; padding: 0px; border: none;">
+          <div class="comment" style="font-size: 11px; padding: 2px 8px 8px 8px; font-style: italic;">
+            {{this.comment}}
+          </div>
+          <div class="comment" style="font-size: 12px; text-align: center; padding-bottom: 4px;">
+            Rating of <span style="font-size: 14px; font-weight: bold; color: {{ratingColor}};">{{ratingWithSign}}</span> from <span style="font-weight: bold;">{{this.name}}</span> on <span style="font-weight: bold;">{{this.ratedOn}}</span>
+          </div>
+        </div>
+        <div style="color: black; font-size: 11px; padding: 0px; background-color: white; text-align: center;">
+          Happiness: {{{happiness}}} | Anger: {{{anger}}} | Disappointment: {{{disappointment}}} | Unhappiness: {{{unhappiness}}} | Anxiety: {{{anxiety}}}
+        </div>
+      </div>
+      {{else}}
+        <div class="alert alert-warning">
+            Analyzing comment, please wait...
+        </div>
+        <div class="loader"></div>
+      {{/if}}
+    {{else}}
+      <div class="alert alert-warning">
+          <!-- Comment cannot be analysed -->
+          Comment too short for machine learning analysis.
+      </div>
+    {{/if}}
+</template>

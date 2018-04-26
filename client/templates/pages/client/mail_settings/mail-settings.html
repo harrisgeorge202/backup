@@ -1,0 +1,351 @@
+<template name="ClientMailSettings">
+    <div class="list-item ibox float-e-margins platforms-view questions-view">
+        <div class="ibox-title">
+            <h2>Settings</h2>
+        </div>
+        <div class="ibox-content">
+            <div class="panel-group payments-method" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-title-dupli">
+                        <h5 class="panel-title"> Settings </h5>
+                    </div>
+                        <div class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form id="client-add-mailNotification-form" class="packages">
+                                            <div class="list-item ">
+                                            <h2>Email Notification Settings</h2>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <label class="control-label">Add Email Notifications? </label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="switch-wrapper">
+                                                              {{#if emailNotification}}
+                                                                <input type="checkbox" id="checkbox1" name="emailNotification"
+                                                                       value="{{user.settings.emailNotification}}" checked="">
+                                                              {{else}}
+                                                                <input type="checkbox" id="checkbox1" name="emailNotification">
+                                                              {{/if}}
+                                                                <label for="checkbox1"><span><em></em></span></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <label class="control-label">Add SMS Notifications? </label>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="switch-wrapper">															
+																{{#if availableSMS}}
+																	{{#if smsNotification}}
+																		<input type="checkbox" id="smsCheckbox" name="smsNotification"
+																			   value="{{user.settings.smsNotification}}" checked="">
+																	{{else}}
+																		<input type="checkbox" id="smsCheckbox" name="smsNotification">
+																	{{/if}}																	
+																{{else}}
+																	<input type="checkbox" id="smsCheckbox" name="smsNotification" disabled="true">
+																	<p>SMS notifications function is off</p>
+																{{/if}}
+																
+																<label for="smsCheckbox"><span><em></em></span></label>		
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <label class="control-label">Expiry Notifications? </label>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <input type="date" class="form-control" id="expiry"  name="expiry" value="{{user.settings.expiry}}">
+                                                            </div>
+                                                        </div>
+                                                    </div>  
+
+
+                                
+                                                <div id="show" style="display: none;">
+
+                                                {{#if scaleType "base10"}}
+                                                    <div class="form-group">
+                                                        <div class="row">   
+                                                            <div class="col-md-12">
+                                                                
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="1">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>1</span>
+                                                                </div>
+                                                                
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="2">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>2</span>
+                                                                </div>                                               
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="3">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>3</span>
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="4">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>4</span>
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="5">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>5</span>
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="6">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>6</span>
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="7">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>7</span> 
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="8">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>8</span> 
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="9">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>9</span> 
+                                                                </div>
+                                                                <div class="checkbox check-baseRating">
+                                                                    <input type="checkbox" name="notification_value[]"
+                                                                        value="10">
+                                                                    <label for="checkbox2"></label>
+                                                                    <span>10</span> 
+                                                                </div>
+                                                                </div>
+                                                        </div>                                                        
+                                                        </div>
+                                                    {{else}}
+                                                        {{#if scaleType "base6"}}
+                                                        <div class="form-group">
+                                                            <div class="row">   
+                                                                <div class="col-md-12">
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="0">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>0</span>
+                                                                    </div>
+
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="1">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>1</span>
+                                                                    </div>
+                                                                    
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="2">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>2</span>
+                                                                    </div>                                               
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="3">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>3</span>
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="4">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>4</span>
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="5">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>5</span>
+                                                                    </div>
+                                                                    </div>
+                                                            </div>                                                        
+                                                            </div>
+                                                        {{else}}
+                                                            <div class="form-group">
+                                                            <div class="row">   
+                                                                <div class="col-md-12">
+                                                                    
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="-4">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>-4</span>
+                                                                    </div>
+                                                                    
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="-3">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>-3</span>
+                                                                    </div>                                               
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="-2">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>-2</span>
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="-1">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>-1</span>
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="1">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>1</span>
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="2">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>2</span>
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="3">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>3</span> 
+                                                                    </div>
+                                                                    <div class="checkbox check-baseRating">
+                                                                        <input type="checkbox" name="notification_value[]"
+                                                                            value="4">
+                                                                        <label for="checkbox2"></label>
+                                                                        <span>4</span> 
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        {{/if}}
+                                                    {{/if}}                                                            
+                                                    </div>
+                                          {{#if findMaestro}}
+                                                 <div class="form-group">
+                                                 <!--<h4 class="branding-title">Maestro Integration Settings</h4>-->
+                                                 <h2>Maestro Integration Settings</h2>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label">Enter HotelId: </label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="session-hotelId" placeholder="Type the Hotel ID here.." value={{hotelid}}>
+                                                     
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label">Hotel Pass: </label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                        <input type="text" class="form-control" id="session-hotelPass" name="session-hotelPass" placeholder="Type the HotelPass here" value={{hotelpass}}>
+                                                     
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label">Choose Action: </label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                        <select name="actionSelection" class="form-control" id="actionSelection">
+                                                        {{#if actionMaestro}}
+                                                            {{#if actionCheckin}}
+                                                                <option value="checkin" selected >CHECKIN</option>
+                                                                <option value="checkout">CHECKOUT</option>
+                                                            {{else}}
+                                                                <option value="checkin">CHECKIN</option>
+                                                                <option value="checkout" selected >CHECKOUT</option>
+                                                            {{/if}}
+
+                                                        {{else}}
+                                                        <option value="">--Select --</option> 
+                                                        <option value="checkin">CHECKIN</option>
+                                                        <option value="checkout">CHECKOUT</option>
+                                                        {{/if}}
+                                                        </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {{/if}}
+
+                                                {{#if findCrane}}
+                                                 <div class="form-group">
+                                                 <h2>Crane Integration Settings</h2>
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <label class="control-label">Choose Type: </label>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                        <select name="typeSelection" class="form-control" id="typeSelection">
+                                                        {{#if typeCrane}}
+                                                            {{#if typeLong}}
+                                                                <option value="long" selected >LONG</option>
+                                                                <option value="short">SHORT</option>
+                                                            {{else}}
+                                                                <option value="long">LONG</option>
+                                                                <option value="short" selected >SHORT</option>
+                                                            {{/if}}
+
+                                                        {{else}}
+                                                        <option value="">--Select --</option> 
+                                                        <option value="long">LONG</option>
+                                                        <option value="short">SHORT</option>
+                                                        {{/if}}
+                                                        </select>
+                                                        </div>
+                                                    </div>   
+                                                </div>
+                                                {{/if}}
+
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

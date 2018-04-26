@@ -1,0 +1,31 @@
+<template name="ticketManagementLayout">
+    <div class="bg"></div>
+    <div>
+        <div class="container-bigger">
+            <div id="wrapper">
+                <div id="page-wrapper">
+                    {{> topNavbar }}
+                    <div class="row">
+                        <div class="col-sm-3 ticket-dashboard ticket-dashboard-left pull-left">
+                            {{> yield region='tickets'}}
+                        </div>
+                        <div class="col-sm-4 ticket-dashboard-main ticket-over-view-block">
+                            {{> yield region='ticketView'}} 
+                        </div>
+                        <div class="col-sm-3 ticket-dashboard-right">
+                            {{> yield region='analytics'}}
+                            
+                        </div>
+                    </div>
+                    <div class="row reminder-settings">
+                        <div class="col-sm-12">
+                            {{> ticketNotification}}
+                        </div>
+                    </div>
+                    {{> footer }}
+                </div>
+            </div>
+        </div>
+    </div>
+       <!-- {{> errors}} -->
+</template>

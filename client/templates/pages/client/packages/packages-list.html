@@ -1,0 +1,30 @@
+<template name="packagesList">
+    <section id="pricing" class="pricing">
+        <!-- Page heading -->
+        {{> pageHeading title='Packages'}}
+        {{#if packagesExists}}
+            <form class="select-package">
+                <div class="wrapper wrapper-content animated fadeInRight landing-page client-package">
+                    <div class="row">
+                        {{#each packages this}}
+                            {{> packagesItem}}
+                        {{/each}}
+                    </div>
+                </div>
+            </form>
+        {{else}}
+            <div class="wrapper wrapper-content animated fadeInRight landing-page client-package">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox-content">
+                            <div class="alert alert-warning no-margins">
+                                No packages here.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {{/if}}
+    </section>
+</template>

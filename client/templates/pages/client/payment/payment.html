@@ -1,0 +1,229 @@
+<template name="paymentView">
+
+    <!-- Page heading -->
+    {{> pageHeading title='Payment' category='packages' }}
+
+    <div class="wrapper wrapper-content payment-wrapper-content animated fadeInRight">
+        {{#if cardsReady}}
+            <div class="row">
+                <!-- #each Cards brgins-->
+                {{#each cards this}}
+                    <div class="col-md-4">
+                        {{> paymentCard }}
+                    </div>
+                {{/each}}
+                <!-- #each Cards ends -->
+            </div>
+        {{/if}}
+        <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        Payment method
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="panel-group payments-method" id="accordion">
+                            <!--<div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="pull-right">
+                                        <i class="fa fa-cc-paypal text-success"></i>
+                                    </div>
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">PayPal</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <h2>Summary</h2>
+                                                <strong>Product:</strong>: Name of product <br/>
+                                                <strong>Price:</strong>: <span class="text-navy">$452.90</span>
+
+                                                <p class="m-t">
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                    nisi ut aliquip ex ea commodo consequat.
+
+                                                </p>
+
+                                                <a class="btn btn-success">
+                                                    <i class="fa fa-cc-paypal">
+                                                        Purchase via PayPal
+                                                    </i>
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="alert alert-warning alert-default"><i class="icon-alert"></i>Fetch does not store your payment information directly. All payments are handled through our payment provider, Stripe, trusted by thousands of other companies. The process is PCI Level 1 compliant, card details are encrypted, and transmitted exclusively via a secured connection.</div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="pull-right">
+                                        <i class="fa pymnt-cls-nw fa-cc-amex text-success"></i>
+                                        <i class="fa pymnt-cls-nw fa-cc-mastercard text-warning"></i>
+                                        <i class="fa pymnt-cls-nw fa-cc-discover text-danger"></i>
+                                        <i class="fa pymnt-cls-nw fa-cc-visa text-success"></i>
+                                    </div>
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Credit
+                                            Card</a>
+                                    </h5>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h2>Summary</h2>
+                                                <strong>Plan:</strong> {{name}}<br/>
+                                                <strong>Price:</strong> USD <span class="text-navy">${{price}}</span>
+                                                <input type="hidden" value="{{stripeId}}" id="stripeIdHidden">
+                                                <input type="hidden" value="{{_id}}" id="packageIdHidden">
+
+                                                <p class="m-t">
+                                                    <strong>{{monthlyEmailLimit}} emails per month.</strong><br/>
+                                                </p>
+                                            </div>
+                                            {{#if savedCards}}
+                                                {{#each savedCard this}}
+                                            <div class="col-md-8">
+
+                                                <form role="form" name="payment-fake-form" id="payment-fake-form">
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>CARD NUMBER</label>
+
+                                                                <div class="input-group">
+                                                                    <input type="text" data-stripe="cardNumber"
+                                                                           class="form-control"
+                                                                           name="Number" value="**** **** **** {{last4}}"
+                                                                           placeholder="Valid Card Number"
+                                                                           disabled/>
+                                                                    <span class="input-group-addon"><i
+                                                                            class="fa fa-credit-card"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-7 col-md-7">
+                                                            <div class="form-group">
+                                                                <label>EXPIRATION DATE</label>
+                                                                <input type="text" data-stripe="expMoYr"
+                                                                       class="form-control" name="Expiry"
+                                                                       value="{{exp_month}} / {{exp_year}}" placeholder="MM / YY" disabled/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-5 col-md-5 pull-right">
+                                                            <div class="form-group">
+                                                                <label>CVV CODE</label>
+                                                                <input type="text" data-stripe="cvc"
+                                                                       class="form-control" name="CVC"
+                                                                       value="***" placeholder="CVV" disabled/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <label>NAME ON CARD</label>
+                                                                <input type="text" data-stripe="name"
+                                                                       class="form-control" name="nameCard"
+                                                                       placeholder="{{name}}" disabled/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-12">
+                                                            <button class="btn btn-primary" type="submit">Subscribe this
+                                                                package!
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                                {{/each}}
+                                            {{else}}
+    <div class="col-md-8">
+
+        <form role="form" name="payment-form" id="payment-form">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label>CARD NUMBER</label>
+
+                        <div class="input-group">
+                            <input type="text" data-stripe="cardNumber"
+                                   class="form-control"
+                                   name="Number" value="4242424242424242"
+                                   placeholder="Valid Card Number"
+                                   required/>
+                                                                    <span class="input-group-addon"><i
+                                                                            class="fa fa-credit-card"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-7 col-md-7">
+                    <div class="form-group">
+                        <label>EXPIRATION DATE</label>
+                        <input type="text" data-stripe="expMoYr"
+                               class="form-control" name="Expiry"
+                               value="12/17" placeholder="MM / YY" required/>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-md-5 pull-right">
+                    <div class="form-group">
+                        <label>CVV CODE</label>
+                        <input type="text" data-stripe="cvc"
+                               class="form-control" name="CVC"
+                               value="322" placeholder="CVV" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label>NAME ON CARD</label>
+                        <input type="text" data-stripe="name"
+                               class="form-control" name="nameCard"
+                               placeholder="NAME AND SURNAME"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary" type="submit">Subscribe this
+                        package!
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

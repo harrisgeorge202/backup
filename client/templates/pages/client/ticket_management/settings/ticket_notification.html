@@ -1,0 +1,44 @@
+<template name="ticketNotification"> 
+    
+    <div class="ticket-settings" data-toggle="modal" data-target="#ticket-settings"> 
+        <img class="resize" src="/ticket-settings.jpg">
+    </div>
+
+    <!-- Reminder Settings Modal-->
+                    <div id="ticket-settings" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Settings</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="ticket-notification-form">
+                                        <div class="switch-wrapper">
+                                            <h4>If a ticket hasn't been solved in a while, you can send your staff a reminder</h4>
+                                            <p class="">Current delay: {{currentDelay}}</p>
+                                            {{#if ticketNotification}}
+                                            <input class="form-control" type="checkbox" id="ticket-settings-checkbox" name="ticketNotification" value="{{ticketNotification}}" checked="">
+                                            {{else}}
+                                            <input class="form-control" type="checkbox" id="ticket-settings-checkbox" name="ticketNotification">
+                                            {{/if}}
+                                            <label class="form-control" for="ticket-settings-checkbox"><span><em></em></span></label>
+                                        </div>
+                                        <div class="row">
+                                            <div id="input-show" style="display: none;">
+                                                <div class="form-group {{errorClass}}">
+                                                    <input class="form-control" id="wait-input" type="text" name="wait-input" placeholder="minutes to wait before sending an email..." maxlength="3"/>
+                                                    <span class="help-block">{{errorMessage}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary" type="submit">Save</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</template>

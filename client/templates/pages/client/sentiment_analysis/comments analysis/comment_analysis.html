@@ -1,0 +1,73 @@
+<template name="commentAnalysis">
+  <div class="panel panel-warning panel-respondents" style="border-color: #83ccff;">
+    <div class="panel-heading" style="background-color: #83ccff; border-color: #83ccff; color: #ffffff">Comment Analysis</div>
+    <div class="panel-body" style="max-height: 653px;">
+      {{#if oneQuestion}}
+        <ul class="nav nav-tabs">
+          <li class="active" style="width: 108px;"><a data-toggle="tab" href="#question1" style="padding-left: 18px; padding-right: 15px;">Question 1</a></li>
+          <li class="disabled" style="width: 107px;"><a href="#" style="padding-left: 18px; padding-right: 15px;">Question 2</a></li>
+          <li class="disabled" style="width: 107px;"><a href="#" style="padding-left: 18px; padding-right: 15px;">Question 3</a></li>
+        </ul>
+        <div class="tab-content" style="overflow-y: scroll; height: 598px;">
+          <div id="question1" class="tab-pane fade in active">
+            <div class="alert alert-info questionTextAlert">
+              {{question1Text}}
+            </div>
+            {{> commentList inputData=(question1Responses)}}
+            <!-- {{> commentList inputData=(question1Responses) panelHeight=(panelHeight)}} -->
+          </div>
+        </div>
+      {{/if}}
+    {{#if twoQuestions}}
+      <ul class="nav nav-tabs">
+        <li class="active" style="width: 108px;"><a data-toggle="tab" href="#question1" style="padding-left: 18px; padding-right: 15px;">Question 1</a></li>
+        <li style="width: 107px;"><a data-toggle="tab" href="#question2" style="padding-left: 18px; padding-right: 15px;">Question 2</a></li>
+        <li class="disabled" style="width: 107px;"><a href="#" style="padding-left: 18px; padding-right: 15px;">Question 3</a></li>
+      </ul>
+
+      <div class="tab-content" style="overflow-y: scroll; height: 598px;">
+        <div id="question1" class="tab-pane fade in active">
+          <div class="alert alert-info questionTextAlert">
+            {{question1Text}}
+          </div>
+          {{> commentList inputData=(question1Responses) }}
+        </div>
+        <div id="question2" class="tab-pane fade">
+          <div class="alert alert-info questionTextAlert">
+            {{question2Text}}
+          </div>
+          {{> commentList inputData=(question2Responses)}}
+        </div>
+      </div>
+    {{/if}}
+    {{#if threeQuestions}}
+      <ul class="nav nav-tabs">
+        <li class="active" style="width: 108px;"><a data-toggle="tab" href="#question1" style="padding-left: 18px; padding-right: 15px;">Question 1</a></li>
+        <li style="width: 107px;"><a data-toggle="tab" href="#question2" style="padding-left: 18px; padding-right: 15px;">Question 2</a></li>
+        <li style="width: 107px;"><a data-toggle="tab" href="#question3" style="padding-left: 18px; padding-right: 15px;">Question 3</a></li>
+      </ul>
+
+      <div class="tab-content" style="overflow-y: scroll; height: 598px;">
+        <div id="question1" class="tab-pane fade in active">
+          <div class="alert alert-info questionTextAlert">
+            {{question1Text}}
+          </div>
+          {{> commentList inputData=(question1Responses) panelHeight=(panelHeight)}}
+        </div>
+        <div id="question2" class="tab-pane fade">
+          <div class="alert alert-info questionTextAlert">
+            {{question2Text}}
+          </div>
+          {{> commentList inputData=(question2Responses) panelHeight=(panelHeight)}}
+        </div>
+        <div id="question3" class="tab-pane fade">
+          <div class="alert alert-info questionTextAlert">
+            {{question3Text}}
+          </div>
+          {{> commentList inputData=(question3Responses) panelHeight=(panelHeight)}}
+        </div>
+      </div>
+    {{/if}}
+    </div>
+  </div>
+</template>

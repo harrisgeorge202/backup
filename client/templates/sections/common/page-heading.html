@@ -1,0 +1,28 @@
+<template name="pageHeading">
+
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-12">
+            <h2>{{title}}</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{pathFor 'home'}}">Home</a>
+                </li>
+                {{#if category}}
+                <li>
+                    <a href="{{pathFor category}}" >{{category}}</a>
+                </li>
+                {{/if}}
+                {{#if previous}}
+                    <li>
+                        {{#with previous}}
+                        <a href="{{path}}" >{{name}}</a>
+                        {{/with}}
+                    </li>
+                {{/if}}
+                <li class="active">
+                    <strong>{{title}}</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</template>

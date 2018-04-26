@@ -1,0 +1,20 @@
+<template name="chart">
+	
+		<div class="panel panel-primary panel-question">
+			<div class="panel-heading">{{questionText}}</div>
+			<div class="panel-body">
+				<div class="col-sm-3 legend">
+					<div class="items responses"><span class="value">{{total}}</span><span class="cl">Responses</span></div>
+					<div class="items average"><span class="value">{{average}}</span><span class="cl">Average Score</span></div>
+					<a class="items download" href="{{csvUrl}}"><span class="co">Download</span><span class="cl">.csv File</span></a>
+				</div>
+				<div class="col-sm-6 barChart">
+					<canvas id="barChart" class="barClass" width="350" height="240"></canvas>
+				</div>
+				<div class="col-sm-3 pieChart">
+					<canvas id="pieChart" class="pieClass" width="240" height="240"></canvas>
+				</div>
+			</div>
+		</div>
+	
+	</template>

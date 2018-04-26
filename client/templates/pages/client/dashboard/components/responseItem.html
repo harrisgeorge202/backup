@@ -1,0 +1,24 @@
+<template name="responseItem">
+    
+        <div class="well well-sm responseItem" style="border-top-color: {{ratingColor}}">
+            <div class="top-row">
+                <div class="left-side">
+                    <div class="name">{{this.name}}</div>
+                </div>
+                <div class="right-side">
+                    <div class="rating" style="background: {{ratingColor}}">{{ratingWithSign}}</div>
+                </div>
+            </div>
+            <div class="bottom-row">
+                <div class="email">{{this.email}}</div>
+                <div class="ratedOn">{{this.ratedOn}}</div>
+            </div>
+            {{#if commentAvailable}}
+                <div class="comment-row well well-sm">
+                    <div class="comment"><strong>Comments: </strong>{{this.comment}}</div>
+                </div>
+            {{/if}}
+        </div>
+    
+    </template>
+    

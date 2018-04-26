@@ -1,0 +1,88 @@
+<template name="adminDashboardList">
+    {{> pageHeading previous=previousRoute title='Statistics'}}
+    <div class="ibox float-e-margins settings-view">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        {{#with platform}}
+                            <h5>{{name}}</h5>
+                        {{/with}}
+                    </div>
+                    <div class="ibox-content">
+                        <div class="search-form">
+                            <form id="filter-days">
+                                <div class="input-group">
+                                    <input type="text" id="noOfDays" placeholder="Enter number of days to filter" name="noOfDays"
+                                           class="form-control input-lg">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-lg btn-primary" type="submit">
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th width="60%">Questions</th>
+                                <th width="15%">Average Rating</th>
+                                <th width="10%">Total Count</th>
+                                <th width="15%">Download</th>
+                            </tr>
+                            </thead>
+                            {{#if filteredResults}}
+                                    <tbody>
+                                    <tr><td colspan="4">FILTERED RESULTS</td></tr>
+                                    {{#each filteredBloomResults this}}
+                                        <tr>
+                                            <td>{{text}}</td>
+                                            <td>{{averageRating this}}</td>
+                                            <td>{{totalCount}}</td>
+                                            <td>
+                                                <a href="{{csvLink this}}">CSV File</a>
+                                            </td>
+                                        </tr>
+                                    {{else}}
+                                        <tr class="no-bg-color">
+                                            <td colspan="4">
+                                                <div class="alert alert-warning">Filtered result, Nothing to show!
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                    </tbody>
+                            {{else}}
+                                {{#if questionsReady}}
+                                    <tbody>
+                                    {{#each questions this}}
+                                        <tr>
+                                            <td>{{text}}</td>
+                                            <td>{{averageRating this}}</td>
+                                            <td>{{totalCount}}</td>
+                                            <td>
+                                                <a href="{{csvLink this}}">CSV File</a>
+                                            </td>
+                                        </tr>
+                                    {{else}}
+                                        <tr class="no-bg-color">
+                                            <td colspan="4">
+                                                <div class="alert alert-warning">No questions active for this platform!
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                    </tbody>
+                                {{else}}
+                                    <h2>Loading questions...</h2>
+                                {{/if}}
+                            {{/if}}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

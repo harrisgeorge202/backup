@@ -1,0 +1,767 @@
+<template name="questionsView">
+    <div class="list-item ibox float-e-margins platforms-view questions-view">
+        <div class="ibox-title ibox2x-title">
+            <h5>Questions for platform "{{name}}"</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row">
+                <div class="col-md-6" style="position: absolute;">
+                    {{#if editingOne}}
+                        <div class="alert alert-info text-center">
+                            Remaining   {{remainingLetters}} chars.
+                        </div>
+                    {{/if}}
+                    </div>
+                    <br>
+                <div class="col-md-6" style="margin-top: 30px;">
+                   <div class="question-row-nw">
+                        <label class="qstn-labl-dd" for="noq">How many questions?</label>
+                        <select class="form-control m-b" name="noq" id="noq">
+                            <option>--</option>
+                            {{#each maxQuestion}}
+                                <option  {{userSelected}}>{{this.value}}</option>
+                            {{/each}}
+                        </select>  
+                   </div>
+                    {{#if questionsReady}}
+                        {{#each strikeQuestions this}}
+                            {{>questionItem}}
+                        {{else}}
+                            <div class="alert alert-warning">No questions here!&nbsp; &nbsp; Add new questions after setting number of questions you
+                                    need.
+                            </div>
+                        {{/each}}
+                        {{#if additional}}
+                            <form class="new-task">
+                                <div class="list-item {{checkedClass}} {{editingClass}}">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-9">
+                                                <input id="newQuestion" class="form-control question-body"
+                                                       maxlength="70" type="text"
+                                                       value="{{text}}"
+                                                       placeholder="Type New Question and hit enter...">
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <button class="js-add-item add-item btn btn-warning" type="submit"><i
+                                                        class="fa fa-save"></i> Save
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        {{/if}}
+
+                        {{#if sessionReady}}
+                            {{#each sessions this}}
+                                <form class="session-platform">
+                                    <div class="need-some-btn">
+                                        <a class="ecommerce btn btn-primary" href="http://www.getfetch.ca/#!What-Should-I-Ask-My-Customers/zugcv/56db3f3d0cf20d226f2048a1" target="_blank">Need some inspiration?</a>
+                                    </div>
+                                    <div class="list-item {{checkedClass}} {{editingClass}}">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label class="margin-btm-nw2-md">Body Text</label>
+                                                    {{#if platform_message}}
+                                                        <textarea
+                                                                class="form-control textarea-from"
+                                                                name="session-message" id="session-message"
+                                                                placeholder="Whatever you write here will be included in emails as a promotional message, give them a good offer!"
+                                                                >{{platform_message}}</textarea>
+                                                    {{else}}
+                                                        <textarea
+
+                                                                class="form-control textarea-from"
+                                                                name="session-message" id="session-message"
+                                                                placeholder="Whatever you write here will be included in emails as a promotional message, give them a good offer!"
+                                                                ><p>Tell us how we did in less than 5 seconds [we promise]!<br>Simply tap the scale below and you’re done!<br>There might even be a little gift for you...<br></p></textarea>
+                                                    {{/if}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="list-item {{checkedClass}} {{editingClass}}">
+                                        <div class="col-xs-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                     <label class="margin-btm-nw2-md">Landing Page Comments</label>
+                                                     {{#if landingpagecomments 'base10'}}
+                                                        <div class="col-sm-12 text-center">
+                                                            <button id="preview1-6" class="btn btn-primary mail-prev-btn" type="button">1-6 Rating</button>
+                                                            <button id="preview7-8" class="btn btn-primary mail-prev-btn" type="button">7-8 Rating</button>
+                                                            <button id="preview9-10" class="btn btn-primary mail-prev-btn" type="button">9-10 Rating</button>
+                                                        </div>
+                                                    {{else}}
+                                                        {{#if landingpagecomments 'base6'}}
+                                                            <div class="col-sm-12 text-center">
+                                                                <button id="preview0-3" class="btn btn-primary mail-prev-btn" type="button">0-3 Rating</button>
+                                                                <button id="preview4-5" class="btn btn-primary mail-prev-btn" type="button">4-5 Rating</button>
+                                                            </div>
+                                                        {{/if}}
+                                                    {{/if}}
+                                                </div>
+                                            </div>
+
+
+
+                                            {{#if landingpagecomments 'base10'}}
+
+                                                {{#if ratingtab1}}
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <textarea
+                                                                      class="form-control textarea-from"
+                                                                      name="comment" id="session-comment1"
+                                                                      placeholder="(1 to 6 Rating)Whatever you write here will be shown to your customers after they give feedback! Some examples are discount codes, coupons, or messages. You can put whatever you feel works best for your business, or even leave it blank."
+                                                                    >{{thanks_cmnt1}}</textarea>
+                                                        </div>
+                                                    </div>
+                                                {{else}}
+                                                    {{#if ratingtab2}}
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <textarea
+                                                                      class="form-control textarea-from"
+                                                                      name="comment" id="session-comment2"
+                                                                      placeholder="(7 to 8 Rating)Whatever you write here will be shown to your customers after they give feedback! Some examples are discount codes, coupons, or messages. You can put whatever you feel works best for your business, or even leave it blank."
+                                                                    >{{thanks_cmnt2}}</textarea>
+                                                             </div>
+                                                        </div>
+                                                    {{else}}
+                                                        {{#if ratingtab3}}
+                                                            <div class="form-group">
+                                                            <div class="row">
+                                                                <textarea
+                                                                        class="form-control textarea-from"
+                                                                        name="comment" id="session-comment3"
+                                                                        placeholder="(9 to 10 Rating)Whatever you write here will be shown to your customers after they give feedback! Some examples are discount codes, coupons, or messages. You can put whatever you feel works best for your business, or even leave it blank."
+                                                                        >{{thanks_cmnt3}}</textarea>
+                                                            </div>
+                                                            </div>
+                                                        {{/if}}
+                                                    {{/if}}
+                                                {{/if}}
+
+                                            {{else}}
+                                                {{#if landingpagecomments 'base6'}}
+
+                                                    {{#if ratingtab1}}
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <textarea
+                                                                          class="form-control textarea-from"
+                                                                          name="comment" id="base6_session-comment1"
+                                                                          placeholder="(0 to 3 Rating)Whatever you write here will be shown to your customers after they give feedback! Some examples are discount codes, coupons, or messages. You can put whatever you feel works best for your business, or even leave it blank."
+                                                                        >{{base6_thanks_cmnt1}}</textarea>
+                                                            </div>
+                                                        </div>
+                                                    {{else}}
+                                                        {{#if ratingtab2}}
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <textarea
+                                                                          class="form-control textarea-from"
+                                                                          name="comment" id="base6_session-comment2"
+                                                                          placeholder="(4 to 5 Rating)Whatever you write here will be shown to your customers after they give feedback! Some examples are discount codes, coupons, or messages. You can put whatever you feel works best for your business, or even leave it blank."
+                                                                        >{{base6_thanks_cmnt2}}</textarea>
+                                                                 </div>
+                                                            </div>
+                                                        {{/if}}
+                                                    {{/if}}
+                                                {{else}}
+                                                    <div class="form-group">
+                                                    <div class="row">
+                                                        <textarea
+                                                                  class="form-control textarea-from"
+                                                                  name="comment" id="session-defaultcomment"
+                                                                  placeholder="Whatever you write here will be shown to your customers after they give feedback! Some examples are discount codes, coupons, or messages. You can put whatever you feel works best for your business, or even leave it blank."
+                                                                >{{thanks_defaultcmnt}}</textarea>
+                                                    </div>
+                                                </div>
+                                                {{/if}}
+                                            {{/if}}
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                    {{#if userDetails.settings}}
+                                        {{#if userDetails.settings.brandingCustomization}}
+                                        <h4 class="branding-title">Branding Options</h4>
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="margin-btm-nw2-md">Select Title Text Colour</label>
+                                                            <br/>
+                                                           <a href="#" class="btn btn-default" id="session-header-font">Select Title Text Colour</a>
+
+
+                                                           {{#if fontcolor}}
+                                                           <a href="#" class="btn btn-default" id="session-header-font-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-font-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
+                                             <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="margin-btm-nw2-md">Select Top Banner Colour</label>
+                                                            <br/>
+                                                           <a href="#" class="btn btn-default" id="session-top">Select Top Banner Colour</a>
+
+                                                           {{#if topcolor}}
+                                                           <a href="#" class="btn btn-default" id="session-header-top-color-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-top-color-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                             <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="margin-btm-nw2-md">Select Bottom Banner Colour</label>
+                                                            <br/>
+                                                           <a href="#" class="btn btn-default" id="session-bottom">Select Bottom Banner Colour</a>
+
+
+                                                           {{#if bottomcolor}}
+                                                           <a href="#" class="btn btn-default" id="session-header-bottom-color-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-bottom-color-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{#if scaletype "base10"}}
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="margin-btm-nw2-md">Select Rating Colour</label>
+                                                            <br/>
+                                                           <a href="#" class="btn btn-default" id="session-rating-color">Select Rating Colour</a>
+                                                           {{#if ratingColor}}
+                                                           <a href="#" class="btn btn-default" id="session-rating-color-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-rating-color-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            {{#if scaletype "base6"}}
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="margin-btm-nw2-md">Select Rating Colour</label>
+                                                            <br/>
+                                                           <a href="#" class="btn btn-default" id="session-rating-color">Select Rating Colour</a>
+                                                           {{#if ratingColor}}
+                                                           <a href="#" class="btn btn-default" id="session-rating-color-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-rating-color-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{/if}}
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="no-margin-bottom">Upload Logo </label>
+                                                            <span class="alert-label margin-10"> Preferred Logo Size 110*110 px</span>
+                                                            {{> upload_bootstrap callbacks=myCallbacks }}
+                                                            <br>
+                                                            {{#if logofind}}
+                                                           <a href="#" class="btn btn-default" id="session-header-logo-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-logo-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                <div class="branding-block block-element-one dotted-block">
+                                                    <h4>Client Email Settings</h4>
+                                                    <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                        <div class="col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <label class="margin-btm-nw2-md">Sender name</label>
+                                                                         <input id="session-senderName" class="form-control question-body"
+                                                                        type="text"
+                                                                        value="{{senderName}}"
+                                                                        placeholder="Type the Sender name here.."> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                   <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                    <div class="col-xs-12">
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <label class="margin-btm-nw2-md">Email Subject</label>
+                                                                <br/>
+                                                                <input id="session-subject" name="subject" class="form-control question-body"
+                                                                type="text"
+                                                                value="{{subject}}"
+                                                                placeholder="Enter a custom subject for your email"> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="branding-block block-element-two dotted-block">
+                                            <h4>Email Survey Branding Options</h4>
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="no-margin-bottom">Upload Top Banner Image </label>
+                                                            <span class="alert-label margin-10">Preferred image Size 493 x 215 px</span>
+                                                            {{> upload_bootstrap callbacks=mySurveyTopBannerCallback }}
+                                                            <br>
+                                                            {{#if surveytopbanner}}
+                                                           <a href="#" class="btn btn-default" id="session-header-top-sbanner-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-top-sbanner-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="no-margin-bottom">Upload Bottom Banner Image </label>
+                                                            <span class="alert-label margin-10">Preferred image Size 493 x 108 px</span>
+                                                            {{> upload_bootstrap callbacks=mySurveyBottomBannerCallback }}
+                                                            <br>
+
+                                                            {{#if surveybottombanner}}
+                                                           <a href="#" class="btn btn-default" id="session-header-bottom-sbanner-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-bottom-sbanner-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                      <div class="branding-block  block-element-three dotted-block">
+                                        <h4>Landing Page Branding Options</h4>
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="no-margin-bottom">Upload Top Banner Image </label>
+                                                           <span class="alert-label margin-10"> Preferred image Size 493 x 215 px</span>
+                                                            {{> upload_bootstrap callbacks=myThankyouTopBannerCallback }}
+                                                            <br>
+                                                           {{#if thankyoutopbanner}}
+                                                           <a href="#" class="btn btn-default" id="session-header-top-tbanner-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-top-tbanner-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="list-item {{checkedClass}} {{editingClass}}">
+                                                <div class="col-xs-12">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="no-margin-bottom">Upload Bottom Banner Image </label>
+                                                            <span class="alert-label margin-10"> Preferred image Size 493 x 108 px</span>
+                                                            {{> upload_bootstrap callbacks=myThankyouBottomBannerCallback }}
+                                                           
+                                                           {{#if thankyoubottombanner}}
+                                                           <a href="#" class="btn btn-default" id="session-header-bottom-tbanner-reset">Reset</a>
+                                                           {{else}}
+                                                           <a href="#" class="btn btn-default" id="session-header-bottom-tbanner-reset" style="display: none">Reset</a>
+                                                           {{/if}}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {{/if}}
+                                    {{/if}}
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <label class="control-label">Set a delay if you don't want to send the emails right away </label>
+                                        </div>
+                                     </div>
+                                     <div class="row">
+                                        <!-- #each Cards begins-->
+                                        {{#each delay this}}
+                                            <div class="col-sm-4 col-md-4">
+                                                <div class="radio radio-base">
+                                                    <input type="radio" {{testCheck session_delay}}  name="delay" id="{{name}}" value="{{name}}">
+                                                    <label for="{{name}}">{{title}}</label>
+                                                </div>
+                                            </div>
+                                        {{/each}}
+                                        <!-- #each Cards ends -->
+                                    </div>
+
+                                    <div class="row sending-emails-nw save-n-finish">
+                                        <div class="col-sm-8">
+                                            <label class="control-label" for="authKey">Comment Box in Thank you page On/Off</label>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="switch-wrapper">
+                                                {{#if commentBox}}
+                                                    <input type="checkbox" id="switch1" checked />
+                                                {{else}}
+                                                    <input type="checkbox" id="switch1" />
+                                                {{/if}}
+                                                <label for="switch1"><span><em></em></span></label>
+                                               <!-- <div class="overlay"></div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row sending-emails-nw save-n-finish">
+                                        <div class="col-sm-4">
+                                            <label class="control-label" for="authKey">Turn Fetch On/Off</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="switch-wrapper">
+                                                {{#if email_stream}}
+                                                    <input type="checkbox" id="switch" checked />
+                                                {{else}}
+                                                    <input type="checkbox" id="switch" />
+                                                {{/if}}
+                                                <label for="switch"><span><em></em></span></label>
+                                               <!-- <div class="overlay"></div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button class="ecommerce btn btn-primary btn-success-green">Save &amp; Finish</button>
+                                </form>
+
+                            {{/each}}
+                        {{/if}}
+                    {{else}}
+                        <div class="wrapper-message">
+                            <div class="title-message">Loading questions...</div>
+                        </div>
+                    {{/if}}
+                </div>
+    {{#if sessionReady}}
+                <div class="col-md-6 preview-scroller">
+                    <div class="right-preview-wrapper qstn-edit-right">
+                        <h2 class="text-center">This is how it will all look...</h2>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <button id="survey-preview" class="btn btn-primary mail-prev-btn">Survey</button>
+                                <button id="thank-preview" class="btn btn-primary mail-prev-btn">Landing Page</button>
+                            </div>
+                        </div>
+                        <br>
+{{#if first_tab}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="background-color: #f6f6f6;">
+                                    <div style="background-color: #f6f6f6; font-family: 'arial'; font-size: 14px; text-align: center;">
+                                        <table style="width: 100%; margin: 0 auto; padding: 0;border-collapse: initial;">
+                                            <tr>
+                                            {{#if surveyTopBanner}}
+                                                <td id="header1" style="background-image: url({{surveyTopBanner}});border-radius:0;height: 215px;width: 493px">
+                                                </td>
+                                            {{else}}
+                                            <td id="header1" style="background-color:{{top_color}};color: {{header_font_color}}; border-radius: 3px 3px 0 0; font-size: 16px; font-weight:bold; padding: 20px;">
+                                                    How did we do?
+                                                </td>
+                                            {{/if}}
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #fff;padding:25px; border:1px solid #e9e9e9;border-collapse: initial;" class="table-rating">
+                                                        <tr>
+                                                            <td>
+                                                                {{#if logo}}
+                                                                <a href="#" target="_blank" class="logo-mail" >
+                                                                    <img class="img-responsive" src="{{logo}}"/>
+                                                                </a>
+                                                                {{/if}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 15px;">
+                                                                {{{commenter}}}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-bottom: 15px; font-size: 18px;">
+                                                                <strong>
+                                                        <span class="rotate">
+                                                            {{rotater}}
+                                                        </span>
+                                                                </strong>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                          
+                                                            {{#if scaletype "base10"}}
+                                                            <div class="rating-10point">
+                                                                <ul>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">1</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">2</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">3</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">4</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">5</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">6</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">7</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">8</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">9</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">10</li>
+                                                                </ul>
+                                                            </div>
+                                                            {{else}}
+                                                                {{#if scaletype "base6"}}
+                                                                <div class="rating-10point">
+                                                                <ul>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">0</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">1</li>      <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">2</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">3</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">4</li>
+                                                                    <li style="color: {{ratingcolor}};border: solid 2px {{ratingcolor}};">5</li>
+                                                                </ul>
+                                                            </div>
+                                                                {{else}}
+                                                                <td style="padding-bottom: 10px; padding-top: 10px;">
+                                                                    <a href="#"><img src="/img/-4.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/-3.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/-2.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/-1.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/1.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/2.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/3.png" alt=""></a>
+                                                                    <a href="#"><img src="/img/4.png" alt=""></a>
+                                                                </td>
+                                                                {{/if}}
+                                                            {{/if}}
+                                                        </tr>
+
+
+                                                        </table>
+                                                        <table style="width: 100%; margin: 0 auto; padding: 0;border-collapse: initial;">
+
+
+                                                    {{#if surveyBottomBanner}}
+                                                        <td id="header2" style="background-image: url({{surveyBottomBanner}});border-radius:0;height: 108px;width: 493px;">
+                                                        </td>
+                                                    {{else}}
+                                                        <td id="header2" style="background-color:{{bottom_color}};border-radius: 0 0 3px 3px; font-size: 16px; font-weight:bold; padding: 20px;">
+                                                        </td>
+                                                   {{/if}}
+
+
+
+                                                        <tr>
+                                                            <td>
+                                                                <a href="http://www.getfetch.ca/" style="color:#69b2a3; text-decoration: none; font-size: 12px;">Powered by Fetch</a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+{{else}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="background-color: #f6f6f6;">
+
+                                    <table style="width:100%; text-align: center; margin: 0 auto; padding: 20px 0;" class="tbl-wrpr">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <table width="100%" cellpadding="0" cellspacing="0">
+                                                    <tbody>
+                                                    <tr>
+                                                    {{#if thankyouTopBanner}}
+                                                        <td id="header1" style="background-image: url({{thankyouTopBanner}});border-radius: 3px 3px 0 0;height: 215px;width: 493px"></td> 
+                                                    {{else}}
+                                                         <td id="header1" style="background-color:{{top_color}};color:{{header_font_color}}; border-radius: 3px 3px 0 0;font-size: 16px; font-weight:bold; padding: 20px;">
+                                                            Thank you</td> 
+                                                    {{/if}}
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="100%" cellpadding="0" cellspacing="0"
+                                                                   style="background-color: #fff;padding: 50px 20px 20px; border:1px solid #e9e9e9;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                    {{#if logo}}
+                                                                        <a href="#" target="_blank" >
+                                                                            <img class="img-responsive" src="{{logo}}"/>
+                                                                        </a>
+                                                                        {{/if}}
+                                                                    </td>
+                                                                </tr>
+                                                                {{#if landingpagecomments 'base10'}}
+
+                                                                 <tr>
+                                                                    <td style="padding-bottom: 30px;">
+                                                                                {{#if ratingtab1}}
+                                                                                    {{{thanks_cmnt1}}}
+                                                                                {{else}}
+                                                                                    {{#if ratingtab2}}
+                                                                                        {{{thanks_cmnt2}}}
+                                                                                    {{else}}
+                                                                                        {{#if ratingtab3}}
+                                                                                            {{{thanks_cmnt3}}}
+                                                                                        {{/if}}
+                                                                                    {{/if}}
+                                                                                {{/if}}
+                                                                    </td>
+                                                                </tr>
+                                                                {{else}}
+                                                                    {{#if landingpagecomments 'base6'}}
+                                                                        <tr>
+                                                                            <td style="padding-bottom: 30px;">
+                                                                                {{#if ratingtab1}}
+                                                                                    {{{base6_thanks_cmnt1}}}
+                                                                                {{else}}
+                                                                                    {{#if ratingtab2}}
+                                                                                        {{{base6_thanks_cmnt2}}}
+                                                                                    {{/if}}
+                                                                                {{/if}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    {{else}}
+                                                                    <tr>
+                                                                        <td style="padding-bottom: 30px;"><br><br>
+                                                                            {{{thanks_defaultcmnt}}}
+                                                                        </td>
+                                                                    </tr>
+                                                                    {{/if}}
+                                                                {{/if}}
+                                                                </tbody>
+                                                        </table>
+                                                        <table style="width: 100%; margin: 0 auto; padding: 0;border-collapse: initial;">
+
+                                                        <tbody>
+                                                                
+                                                    <tr>
+                                                     {{#if thankyouBottomBanner}}
+                                                            <td id="header2" style="background-image: url({{thankyouBottomBanner}});border-radius: 3px 3px 0 0;height: 108px;width: 493px">
+                                                            </td>
+                                                     {{else}}
+                                                        <td id="header2" style="background-color:{{bottom_color}};border-radius:0 0 3px 3px;padding: 20px;">
+                                                        </td>
+                                                   {{/if}}
+                                                    </tr>
+                                                                <tr>
+                                                                    <td><a href="http://www.getfetch.ca/"
+                                                                           style="color:#69b2a3; text-decoration: none; font-size: 12px;">Powered
+                                                                        by Fetch</a><br><br></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <div style="background-color: #f6f6f6; font-family: 'arial'; font-size: 14px; text-align: center;">
+                                        <table style="width: 100%; margin: 0 auto; padding: 0;border-collapse: initial;">
+
+                                        </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+{{/if}}
+                    </div>
+                    <!--<img alt="" src="../Gif_fetch.gif">-->
+                </div>
+    {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function(){
+    let scrollPosition = 0;
+     var getWid = $(".qstn-edit-right").width();
+     $(window).scroll(function () {
+     scrollPosition = $(this).scrollTop();
+     // Update header class after scrolling
+     if (scrollPosition > 192) {
+        $(".qstn-edit-right").addClass("fixed");
+        $(".qstn-edit-right").width( getWid );
+     } else {
+        $(".qstn-edit-right").removeClass("fixed");
+        $(".qstn-edit-right").width( getWid );
+     }
+  });
+    });
+ 
+     </script>
+</template>
